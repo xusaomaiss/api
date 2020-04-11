@@ -1,0 +1,1275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on darwin)" generated="20200410 11:13:40.609" rpa="false">
+<suite id="s1" name="PostExpose" source="/Users/linhai/PycharmProjects/API/APP_EXPOSE/PostExpose.robot">
+<kw name="Create Session Common" library="Common" type="setup">
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${APPIF_URL}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:40.911" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com/app_if, headers={'APITEST': '1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200410 11:13:40.911" endtime="20200410 11:13:40.912"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:40.911" endtime="20200410 11:13:40.912"></status>
+</kw>
+<test id="s1-t1" name="正常稿件提交举报">
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${REASON}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:40.914" endtime="20200410 11:13:40.914"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:40.914" endtime="20200410 11:13:40.914"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:40.915" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': '0', 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.367" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:40.914" endtime="20200410 11:13:41.367"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.368" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6880&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.368" endtime="20200410 11:13:41.368"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.369" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6880&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.368" endtime="20200410 11:13:41.369"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:40.913" endtime="20200410 11:13:41.369"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200410 11:13:41.370" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200410 11:13:41.370" endtime="20200410 11:13:41.370"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.370" endtime="20200410 11:13:41.370"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:40.912" endtime="20200410 11:13:41.371" critical="yes"></status>
+</test>
+<test id="s1-t2" name="正常评论提交举报">
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${REASON}</arg>
+<arg>${ROOTID1}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE0}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.373" endtime="20200410 11:13:41.373"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.373" endtime="20200410 11:13:41.373"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.374" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试', 'rootID': '1633', 'siteid': '1', 'sourceType': '0', 'type': '0', 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.443" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.373" endtime="20200410 11:13:41.444"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.444" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e1527f0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.444" endtime="20200410 11:13:41.444"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.445" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e1527f0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.444" endtime="20200410 11:13:41.445"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.372" endtime="20200410 11:13:41.445"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200410 11:13:41.445" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200410 11:13:41.445" endtime="20200410 11:13:41.445"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.445" endtime="20200410 11:13:41.446"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.371" endtime="20200410 11:13:41.446" critical="yes"></status>
+</test>
+<test id="s1-t3" name="测试提交不同类型的举报，正常值为0到4 ，但测试超过4的type 返回也为true">
+<kw name="${i} IN RANGE [ 10 ]" type="for">
+<kw name="${i} = 0" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.449" level="INFO">${reason_temp} = 举报测试 0</msg>
+<status status="PASS" starttime="20200410 11:13:41.449" endtime="20200410 11:13:41.449"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.450" endtime="20200410 11:13:41.451"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.451" endtime="20200410 11:13:41.451"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.452" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 0', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 0, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.514" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.451" endtime="20200410 11:13:41.514"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.515" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6a30&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.515" endtime="20200410 11:13:41.515"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.515" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6a30&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.515" endtime="20200410 11:13:41.516"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.450" endtime="20200410 11:13:41.516"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.516" endtime="20200410 11:13:41.516"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.449" endtime="20200410 11:13:41.516"></status>
+</kw>
+<kw name="${i} = 1" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.517" level="INFO">${reason_temp} = 举报测试 1</msg>
+<status status="PASS" starttime="20200410 11:13:41.517" endtime="20200410 11:13:41.517"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.518" endtime="20200410 11:13:41.518"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.519" endtime="20200410 11:13:41.519"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.519" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 1', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 1, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.599" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.600" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.519" endtime="20200410 11:13:41.600"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.600" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e15c0d0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.600" endtime="20200410 11:13:41.600"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.601" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e15c0d0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.601" endtime="20200410 11:13:41.601"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.517" endtime="20200410 11:13:41.601"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.601" endtime="20200410 11:13:41.602"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.516" endtime="20200410 11:13:41.602"></status>
+</kw>
+<kw name="${i} = 2" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.602" level="INFO">${reason_temp} = 举报测试 2</msg>
+<status status="PASS" starttime="20200410 11:13:41.602" endtime="20200410 11:13:41.602"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.603" endtime="20200410 11:13:41.603"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.604" endtime="20200410 11:13:41.604"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.604" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 2', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 2, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.675" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.675" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.676" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.604" endtime="20200410 11:13:41.676"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.676" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e15c070&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.676" endtime="20200410 11:13:41.677"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.677" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e15c070&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.677" endtime="20200410 11:13:41.677"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.602" endtime="20200410 11:13:41.677"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.678" endtime="20200410 11:13:41.678"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.602" endtime="20200410 11:13:41.678"></status>
+</kw>
+<kw name="${i} = 3" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.679" level="INFO">${reason_temp} = 举报测试 3</msg>
+<status status="PASS" starttime="20200410 11:13:41.678" endtime="20200410 11:13:41.679"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.679" endtime="20200410 11:13:41.680"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.680" endtime="20200410 11:13:41.680"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.681" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 3', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 3, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.734" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.680" endtime="20200410 11:13:41.735"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.735" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e152820&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.735" endtime="20200410 11:13:41.735"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.736" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e152820&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.735" endtime="20200410 11:13:41.736"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.679" endtime="20200410 11:13:41.736"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.736" endtime="20200410 11:13:41.737"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.678" endtime="20200410 11:13:41.737"></status>
+</kw>
+<kw name="${i} = 4" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.737" level="INFO">${reason_temp} = 举报测试 4</msg>
+<status status="PASS" starttime="20200410 11:13:41.737" endtime="20200410 11:13:41.737"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.738" endtime="20200410 11:13:41.738"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.739" endtime="20200410 11:13:41.739"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.739" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 4', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 4, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.801" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.739" endtime="20200410 11:13:41.802"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.802" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e16e370&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.802" endtime="20200410 11:13:41.802"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.803" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e16e370&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.803" endtime="20200410 11:13:41.803"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.737" endtime="20200410 11:13:41.803"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.803" endtime="20200410 11:13:41.804"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.737" endtime="20200410 11:13:41.804"></status>
+</kw>
+<kw name="${i} = 5" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.804" level="INFO">${reason_temp} = 举报测试 5</msg>
+<status status="PASS" starttime="20200410 11:13:41.804" endtime="20200410 11:13:41.804"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.805" endtime="20200410 11:13:41.806"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.806" endtime="20200410 11:13:41.806"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.806" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 5', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 5, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.858" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.806" endtime="20200410 11:13:41.858"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.859" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6430&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.858" endtime="20200410 11:13:41.859"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.859" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d6430&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.859" endtime="20200410 11:13:41.860"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.804" endtime="20200410 11:13:41.860"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.860" endtime="20200410 11:13:41.860"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.804" endtime="20200410 11:13:41.860"></status>
+</kw>
+<kw name="${i} = 6" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.861" level="INFO">${reason_temp} = 举报测试 6</msg>
+<status status="PASS" starttime="20200410 11:13:41.861" endtime="20200410 11:13:41.861"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.862" endtime="20200410 11:13:41.862"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.862" endtime="20200410 11:13:41.862"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.863" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 6', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 6, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.921" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.921" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.922" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.863" endtime="20200410 11:13:41.922"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.922" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e08e9a0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.922" endtime="20200410 11:13:41.922"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.923" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e08e9a0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:41.923" endtime="20200410 11:13:41.923"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.861" endtime="20200410 11:13:41.923"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.923" endtime="20200410 11:13:41.924"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.860" endtime="20200410 11:13:41.924"></status>
+</kw>
+<kw name="${i} = 7" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:41.924" level="INFO">${reason_temp} = 举报测试 7</msg>
+<status status="PASS" starttime="20200410 11:13:41.924" endtime="20200410 11:13:41.924"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.925" endtime="20200410 11:13:41.926"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:41.926" endtime="20200410 11:13:41.926"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:41.926" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 7', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 7, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:41.999" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:41.926" endtime="20200410 11:13:41.999"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:42.000" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e174040&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.000" endtime="20200410 11:13:42.000"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:42.001" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e174040&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.000" endtime="20200410 11:13:42.001"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.925" endtime="20200410 11:13:42.001"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.001" endtime="20200410 11:13:42.001"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.924" endtime="20200410 11:13:42.001"></status>
+</kw>
+<kw name="${i} = 8" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:42.002" level="INFO">${reason_temp} = 举报测试 8</msg>
+<status status="PASS" starttime="20200410 11:13:42.002" endtime="20200410 11:13:42.002"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.003" endtime="20200410 11:13:42.004"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.004" endtime="20200410 11:13:42.004"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:42.005" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 8', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 8, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:42.073" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:42.004" endtime="20200410 11:13:42.074"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:42.074" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e1659d0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.074" endtime="20200410 11:13:42.074"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:42.075" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e1659d0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.074" endtime="20200410 11:13:42.075"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:42.002" endtime="20200410 11:13:42.075"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.075" endtime="20200410 11:13:42.076"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:42.002" endtime="20200410 11:13:42.076"></status>
+</kw>
+<kw name="${i} = 9" type="foritem">
+<kw name="Catenate" library="BuiltIn">
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<arguments>
+<arg>${REASON}</arg>
+<arg>${i}</arg>
+</arguments>
+<assign>
+<var>${reason_temp}</var>
+</assign>
+<msg timestamp="20200410 11:13:42.076" level="INFO">${reason_temp} = 举报测试 9</msg>
+<status status="PASS" starttime="20200410 11:13:42.076" endtime="20200410 11:13:42.076"></status>
+</kw>
+<kw name="Post Expose" library="Expose_Common">
+<doc>提交举报</doc>
+<arguments>
+<arg>${USERID}</arg>
+<arg>${USERNAME}</arg>
+<arg>${reason_temp}</arg>
+<arg>${ROOTID}</arg>
+<arg>${SITEID}</arg>
+<arg>${SOURCETYPE1}</arg>
+<arg>${i}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>reason</arg>
+<arg>${reason}</arg>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>type</arg>
+<arg>${type}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.077" endtime="20200410 11:13:42.077"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.078" endtime="20200410 11:13:42.078"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${POSTEXPOSE_URI}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:42.078" level="INFO">POST Request using : uri=/expose, params={'userID': '103', 'userName': '用户108', 'reason': '举报测试 9', 'rootID': '887', 'siteid': '1', 'sourceType': '1', 'type': 9, 'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">  "data": {</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">  }</msg>
+<msg timestamp="20200410 11:13:42.132" level="INFO">}</msg>
+<msg timestamp="20200410 11:13:42.133" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200410 11:13:42.078" endtime="20200410 11:13:42.133"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200410 11:13:42.133" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d69a0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.133" endtime="20200410 11:13:42.133"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200410 11:13:42.134" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x10e0d69a0&gt;</msg>
+<status status="PASS" starttime="20200410 11:13:42.133" endtime="20200410 11:13:42.134"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:42.076" endtime="20200410 11:13:42.134"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200410 11:13:42.134" endtime="20200410 11:13:42.135"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:42.076" endtime="20200410 11:13:42.135"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.449" endtime="20200410 11:13:42.135"></status>
+</kw>
+<status status="PASS" starttime="20200410 11:13:41.446" endtime="20200410 11:13:42.135" critical="yes"></status>
+</test>
+<kw name="Fapi Delete All Sessions" library="FATL.FapiKeywords" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20200410 11:13:42.136" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20200410 11:13:42.136" endtime="20200410 11:13:42.136"></status>
+</kw>
+<doc>举报接口用例文档</doc>
+<status status="PASS" starttime="20200410 11:13:40.610" endtime="20200410 11:13:42.136"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0">Critical Tests</stat>
+<stat pass="3" fail="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="3" fail="0" id="s1" name="PostExpose">PostExpose</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

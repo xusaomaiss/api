@@ -1,0 +1,29 @@
+{
+	"count" : 4,
+	"list": [
+        {
+			"provider": "sina_weibo",
+			"oid": "7126945184",
+			"nickname": "用户7126945184",
+			"code": "1"
+		},
+		{
+			"provider": "tencent_wechat",
+			"oid": "o7jOUwwSR2ecmE_wXxsofN7cYbmY",
+			"nickname": "tester~『测试』",
+			"code": "1"
+		},
+		{
+			"provider": "tencent_QQ",
+			"oid": "E66F9648D22AEF90FAF657DB25CC275B",
+			"nickname": "lili",
+			"code": "1"
+		},
+		{
+			"provider": "apple",
+			"oid": "001587",
+			"nickname": "APPLE001587",
+			"code": "1"
+		}
+	]
+}

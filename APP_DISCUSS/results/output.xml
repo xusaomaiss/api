@@ -1,0 +1,1133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on darwin)" generated="20200401 18:35:51.039" rpa="false">
+<suite id="s1" name="PostDiscuss" source="/Users/linhai/PycharmProjects/API/APP_DISCUSS/PostDiscuss.robot">
+<kw name="Create Session Common" library="Common" type="setup">
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${APPIF_URL}</arg>
+</arguments>
+<msg timestamp="20200401 18:35:51.392" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com/app_if, headers={'APITEST': '1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200401 18:35:51.391" endtime="20200401 18:35:51.392"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:35:51.391" endtime="20200401 18:35:51.392"></status>
+</kw>
+<test id="s1-t1" name="正常提交评论">
+<kw name="Get Article Content" library="ArticleContent_Common">
+<doc>查看稿件详情接口</doc>
+<arguments>
+<arg>${ROOTID}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>articleId</arg>
+<arg>${articleid}</arg>
+<arg>siteId</arg>
+<arg>1</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:35:51.393" endtime="20200401 18:35:51.393"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETARTICLECONTENT_URI}</arg>
+</arguments>
+<msg timestamp="20200401 18:35:51.394" level="INFO">GET Request using : uri=/getArticleContent, params={'articleId': '887', 'siteId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">  "data": {</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "wordCount": 41,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "readTime": 1,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "fileId": "887",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "siteID": 1,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "siteName": "新福建",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "version": 1585735190000,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "realPubTime": "2020-04-01 17:59:50.0",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "title": "文章标题哦~!@0#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\\\|",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "attAbstract": "摘要111~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "publishtime": "2020-03-21 23:40:39.0",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "source": "来源东南网",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "sourceUrl": "来源链接 http://www.baidu.com",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "author": "作者字段hy",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "arthorName": "作者字段hy",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "authorID": 24,</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "reporter": "",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "liability": "黄羽 责任编辑",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "collaborator": "合作者字段345353",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "editor": "黄羽 编辑",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "cameraman": "摄影10",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "drawer": "制图11",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "overallPlanning": "统筹12",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "correspondent": "通讯员13",</msg>
+<msg timestamp="20200401 18:35:52.366" level="INFO">    "intern": "实习生14",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "director": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "subtitle": "副题 444~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "leadTitle": "引题 555~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "tag": "于测试标签1",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "columnID": 77,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "colIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "discussClosed": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "isBigPic": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "isExclusive": 1,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "articleType": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "linkType": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "shareUrl": "https://img1.fjdaily.com/app/content/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "url": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "multimediaLink": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "trade": "地域",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "tradeID": "33~37",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "linkID": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "linkName": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "extGroupID": 156,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "colID": "77",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countDiscuss": "47",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countPraise": "0",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countShare": "0",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countClick": 15,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countClickFake": "0",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countClickInitial": "15",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "rssID": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "rss": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "rssType": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "relChannelID": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "relChannel": "",</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "shareClosed": 1,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "isReward": 1,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "countReward": 0,</msg>
+<msg timestamp="20200401 18:35:52.367" level="INFO">    "picurl": "图片存储;xy/202003/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "ext_sharepic": "图片存储;xy/202003/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "keylist": "关键字 字段 222",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "sectionids": "19;77",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "allRelateColCasList": [</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">      "首页~问吧",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">      "首页~test栏目"</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "newstype": 0,</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "collectcount": 0,</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "edittername": "黄羽 编辑",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "iorder": "-17770234.0000887000",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "isrecommend": 0,</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "picauthor": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "picauthorid": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "videoauthor": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "videoauthorid": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "planner": "策划88",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "checker": "审核99",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "sharePicUrl": "图片存储;xy/202003/21/t2_(49X33X231X215)f96c0b8f-549e-4c53-a5bc-0227dd69c721.png",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "shareTitle": "分享标题111",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "shareContent": "分享摘要222",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "picBig": "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "pic_list": [],</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "pic_list_title": [</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">      "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "headPic": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "headPicType": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "aStatus": 1,</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "emojiID": "",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "advClosed": 1,</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "copyright": "1",</msg>
+<msg timestamp="20200401 18:35:52.368" level="INFO">    "sharePicAbsoluteUrl": "https://api1.fjdaily.com/app_if/getImage?path=图片存储;xy/202003/21/t2_(49X33X231X215)f96c0b8f-549e-4c53-a5bc-0227dd69c721.png",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "customShare": 1,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "listTitle": "列表 标题 666 ~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "praiseType": 0,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnDescription": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnType": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnStyle": "101",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnRssCount": 0,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "columnName": "test栏目",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "isShowReporterCard": 1,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "reporters": [</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">      {</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "id": 23,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "name": "赖厚泽",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "url": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "duty": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "description": ""</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">      }</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "tags": [</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">      {</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "id": 5,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "name": "于测试标签1",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">        "order": 1</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">      }</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "xyAccountID": 0,</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "xyAccount": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "xyAccountIcon": "",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png.0",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "content": "&lt;html&gt;\n &lt;head&gt;&lt;/head&gt;\n &lt;body&gt;\n  &lt;p&gt;稿件内容hy123&lt;span style=\"text-align: center; white-space: pre-wrap;\"&gt;~!@#$%^&amp;amp;*()_+{}|:\"&amp;lt;&amp;gt;?,./;'[]-=\\|&lt;/span&gt;&lt;/p&gt;\n &lt;/body&gt;\n&lt;/html&gt;",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "图书简介": "扩展图书简介22",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "图书详情": "图书详情333",</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">    "extendedFiled": {</msg>
+<msg timestamp="20200401 18:35:52.369" level="INFO">      "图书简介": "扩展图书简介22",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">      "图书详情": "图书详情333"</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">    },</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">    "widgets": {</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">      "pic": [</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        {</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/8490705e-fffb-4a76-94f2-7e777cb57e84.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/8490705e-fffb-4a76-94f2-7e777cb57e84.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "summary": "图说图说图说12424图说图说图说图说未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动"</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        },</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        {</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/7c64eb36-06bb-4da0-9d9b-34993c88eb10.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/7c64eb36-06bb-4da0-9d9b-34993c88eb10.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "summary": "11223131"</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        },</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        {</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          "summary": "~!@#$%^&amp;*()_+{}|:&amp;quot;&lt;&gt;?"</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        }</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">      ],</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">      "video": [],</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">      "vote": {</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "id": 118,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "name": "稿内投票测试",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "endDate": "2020-03-22 11:10:00.0",</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "needLogin": 0,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "voteCycle": 2,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "voteCyclenum": 2,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "onlyapp": 1,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "clientStyle": 0,</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">        "questions": [</msg>
+<msg timestamp="20200401 18:35:52.370" level="INFO">          {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            "qid": 117,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            "qname": "兴趣爱好!#$%^&amp;*()~!@#$%^&amp;*()_+_+{}|{}|:&amp;quot;&lt;&gt;?,./;&amp;apos;[]",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            "qtype": 1,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            "selectLimited": 2,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            "options": [</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oid": 157,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oname": "美食&amp;apos;",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              },</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oid": 158,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oname": "旅游$%^&amp;",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              },</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oid": 159,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oname": "运动@&amp;quot;",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              },</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oid": 160,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "oname": "读书\\",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">              }</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">            ]</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">          }</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">        ]</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">      },</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">      "file": []</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">    },</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">    "related": [</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">      {</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">        "relId": 886,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">        "fileId": 886,</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">        "title": "鼓楼区新闻",</msg>
+<msg timestamp="20200401 18:35:52.371" level="INFO">        "textTitle": "鼓楼区新闻",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "publishtime": "2020-03-21 20:06:27.0",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "source": "",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "sourceID": 0,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "picType": 1,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "picB": "https://img1.fjdaily.com/app/column/2020-03/21/eb25f148-c2b8-40b7-b3cc-eb4d0b9044ea.jpg",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "picM": "",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "picS": "",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "countDiscuss": "0",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "countPraise": "2",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "countShare": "0",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "countClick": "0",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "countClickInitial": "0",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "articleType": 0,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "vTime": "",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "relUrl": "https://img1.fjdaily.com/app/pad/content/content_886.html",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "contentUrl": "https://api1.fjdaily.com/app_if/getArticleContent?articleId=886",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "columnID": 84,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "columnIcon ": "http://218.66.59.25:3083/app/resource/202003/21/c74e3ee0-cbd1-487b-8a56-f804b1cdd6cf.jpg",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "columnName": "鼓楼区",</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">        "columnRssCount ": 0</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">      }</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">    "adv": [],</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">    "emojiUseCount": 0,</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">    "emojis": []</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">  }</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">}</msg>
+<msg timestamp="20200401 18:35:52.372" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200401 18:35:51.394" endtime="20200401 18:35:52.372"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200401 18:35:52.373" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x102c37820&gt;</msg>
+<status status="PASS" starttime="20200401 18:35:52.373" endtime="20200401 18:35:52.373"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200401 18:35:52.374" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x102c37820&gt;</msg>
+<status status="PASS" starttime="20200401 18:35:52.373" endtime="20200401 18:35:52.374"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:35:51.393" endtime="20200401 18:35:52.374"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response_data.countDiscuss}</arg>
+</arguments>
+<assign>
+<var>${discusscount}</var>
+</assign>
+<msg timestamp="20200401 18:35:52.375" level="INFO">${discusscount} = 47</msg>
+<status status="PASS" starttime="20200401 18:35:52.374" endtime="20200401 18:35:52.375"></status>
+</kw>
+<kw name="Post Discuss" library="Discuss_Common">
+<doc>提交评论，为简化，只需要输入评论的稿件ID和评论内容</doc>
+<arguments>
+<arg>${ROOTID}</arg>
+<arg>${CONTENT}</arg>
+</arguments>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>content</arg>
+<arg>${content}</arg>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>longitude</arg>
+<arg>${longitude}</arg>
+<arg>latitude</arg>
+<arg>${latitude}</arg>
+<arg>location</arg>
+<arg>${location}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>channel</arg>
+<arg>${channel}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200401 18:35:52.376" level="INFO">${bodyData} = {'rootID': '887', 'content': '评论', 'userID': '103', 'userName': '用户108', 'longitude': '116.397128', 'latitude': '39.916527', 'location': '北京', 'siteid': '1', 'sourceType': '0', 'channel': '2', 'curVer...</msg>
+<status status="PASS" starttime="20200401 18:35:52.375" endtime="20200401 18:35:52.376"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:35:52.376" endtime="20200401 18:35:52.376"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${DISCUSS_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200401 18:35:52.377" level="INFO">POST Request using : uri=/discuss, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=rootID=887&amp;content=%E8%AF%84%E8%AE%BA&amp;userID=103&amp;userName=%E7%94%A8%E6%88%B7108&amp;longitude=116.397128&amp;latitude=39.916527&amp;location=%E5%8C%97%E4%BA%AC&amp;siteid=1&amp;sourceType=0&amp;channel=2&amp;curVersions=1 
+json=None</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">  "data": {</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">  }</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">}</msg>
+<msg timestamp="20200401 18:35:52.410" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200401 18:35:52.377" endtime="20200401 18:35:52.410"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200401 18:35:52.410" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x102ce92e0&gt;</msg>
+<status status="PASS" starttime="20200401 18:35:52.410" endtime="20200401 18:35:52.410"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200401 18:35:52.411" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x102ce92e0&gt;</msg>
+<status status="PASS" starttime="20200401 18:35:52.411" endtime="20200401 18:35:52.411"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:35:52.375" endtime="20200401 18:35:52.411"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200401 18:35:52.411" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200401 18:35:52.411" endtime="20200401 18:35:52.411"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:35:52.412" endtime="20200401 18:35:52.412"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>30</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.413" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20200401 18:35:52.412" endtime="20200401 18:36:22.413"></status>
+</kw>
+<kw name="Get Article Content" library="ArticleContent_Common">
+<doc>查看稿件详情接口</doc>
+<arguments>
+<arg>${ROOTID}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>articleId</arg>
+<arg>${articleid}</arg>
+<arg>siteId</arg>
+<arg>1</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.414" endtime="20200401 18:36:22.415"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETARTICLECONTENT_URI}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.415" level="INFO">GET Request using : uri=/getArticleContent, params={'articleId': '887', 'siteId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200401 18:36:22.642" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">  "data": {</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "wordCount": 41,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "readTime": 1,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "fileId": "887",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "siteID": 1,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "siteName": "新福建",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "version": 1585735190000,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "realPubTime": "2020-04-01 17:59:50.0",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "title": "文章标题哦~!@0#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\\\|",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "attAbstract": "摘要111~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "publishtime": "2020-03-21 23:40:39.0",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "source": "来源东南网",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "sourceUrl": "来源链接 http://www.baidu.com",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "author": "作者字段hy",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "arthorName": "作者字段hy",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "authorID": 24,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "reporter": "",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "liability": "黄羽 责任编辑",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "collaborator": "合作者字段345353",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "editor": "黄羽 编辑",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "cameraman": "摄影10",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "drawer": "制图11",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "overallPlanning": "统筹12",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "correspondent": "通讯员13",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "intern": "实习生14",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "director": "",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "subtitle": "副题 444~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "leadTitle": "引题 555~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "tag": "于测试标签1",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "columnID": 77,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "colIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "discussClosed": 0,</msg>
+<msg timestamp="20200401 18:36:22.643" level="INFO">    "isBigPic": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "isExclusive": 1,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "linkType": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "shareUrl": "https://img1.fjdaily.com/app/content/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "url": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "multimediaLink": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "trade": "地域",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "tradeID": "33~37",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "linkName": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "extGroupID": 156,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "colID": "77",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countDiscuss": 48,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countPraise": "0",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countShare": "0",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countClick": 15,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countClickFake": "0",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countClickInitial": "15",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "rssID": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "rss": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "relChannelID": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "relChannel": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "shareClosed": 1,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "isReward": 1,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "countReward": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "picurl": "图片存储;xy/202003/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "ext_sharepic": "图片存储;xy/202003/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "keylist": "关键字 字段 222",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "sectionids": "19;77",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "allRelateColCasList": [</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">      "首页~问吧",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">      "首页~test栏目"</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "newstype": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "collectcount": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "edittername": "黄羽 编辑",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "iorder": "-17770234.0000887000",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "isrecommend": 0,</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "picauthor": "",</msg>
+<msg timestamp="20200401 18:36:22.644" level="INFO">    "picauthorid": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "videoauthor": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "videoauthorid": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "planner": "策划88",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "checker": "审核99",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "sharePicUrl": "图片存储;xy/202003/21/t2_(49X33X231X215)f96c0b8f-549e-4c53-a5bc-0227dd69c721.png",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "shareTitle": "分享标题111",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "shareContent": "分享摘要222",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "picBig": "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "pic_list": [],</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "pic_list_title": [</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">      "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "headPic": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "headPicType": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "aStatus": 1,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "emojiID": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "advClosed": 1,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "copyright": "1",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "sharePicAbsoluteUrl": "https://api1.fjdaily.com/app_if/getImage?path=图片存储;xy/202003/21/t2_(49X33X231X215)f96c0b8f-549e-4c53-a5bc-0227dd69c721.png",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "customShare": 1,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "listTitle": "列表 标题 666 ~!@#$%^&amp;*()_+{}|:\"&lt;&gt;?,./;'[]-=\\|",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "praiseType": 0,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnDescription": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnType": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnStyle": "101",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnRssCount": 0,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "columnName": "test栏目",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "isShowReporterCard": 1,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "reporters": [</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">        "id": 23,</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">        "name": "赖厚泽",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">        "url": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">        "duty": "",</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">        "description": ""</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">      }</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.645" level="INFO">    "tags": [</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        "id": 5,</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        "name": "于测试标签1",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        "order": 1</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      }</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "xyAccountID": 0,</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "xyAccount": "",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "xyAccountIcon": "",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png.0",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "content": "&lt;html&gt;\n &lt;head&gt;&lt;/head&gt;\n &lt;body&gt;\n  &lt;p&gt;稿件内容hy123&lt;span style=\"text-align: center; white-space: pre-wrap;\"&gt;~!@#$%^&amp;amp;*()_+{}|:\"&amp;lt;&amp;gt;?,./;'[]-=\\|&lt;/span&gt;&lt;/p&gt;\n &lt;/body&gt;\n&lt;/html&gt;",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "图书简介": "扩展图书简介22",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "图书详情": "图书详情333",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "extendedFiled": {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      "图书简介": "扩展图书简介22",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      "图书详情": "图书详情333"</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    },</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">    "widgets": {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      "pic": [</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/8490705e-fffb-4a76-94f2-7e777cb57e84.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/8490705e-fffb-4a76-94f2-7e777cb57e84.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "summary": "图说图说图说12424图说图说图说图说未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动跳转未点击自动"</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/7c64eb36-06bb-4da0-9d9b-34993c88eb10.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/7c64eb36-06bb-4da0-9d9b-34993c88eb10.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "summary": "11223131"</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        {</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "ref": "https://img1.fjdaily.com/app/column/2020-03/19/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "picType": 1,</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "imageUrl": "https://img1.fjdaily.com/app/column/2020-03/19/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">          "summary": "~!@#$%^&amp;*()_+{}|:&amp;quot;&lt;&gt;?"</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">        }</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      ],</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      "video": [],</msg>
+<msg timestamp="20200401 18:36:22.646" level="INFO">      "vote": {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "id": 118,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "name": "稿内投票测试",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "endDate": "2020-03-22 11:10:00.0",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "needLogin": 0,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "voteCycle": 2,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "voteCyclenum": 2,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "onlyapp": 1,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "clientStyle": 0,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        "questions": [</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">          {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            "qid": 117,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            "qname": "兴趣爱好!#$%^&amp;*()~!@#$%^&amp;*()_+_+{}|{}|:&amp;quot;&lt;&gt;?,./;&amp;apos;[]",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            "qtype": 1,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            "selectLimited": 2,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            "options": [</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oid": 157,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oname": "美食&amp;apos;",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              },</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oid": 158,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oname": "旅游$%^&amp;",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              },</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oid": 159,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oname": "运动@&amp;quot;",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              },</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              {</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oid": 160,</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "oname": "读书\\",</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">                "pic": ""</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">              }</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">            ]</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">          }</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">        ]</msg>
+<msg timestamp="20200401 18:36:22.647" level="INFO">      },</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">      "file": []</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    },</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    "related": [</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "relId": 886,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "fileId": 886,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "title": "鼓楼区新闻",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "textTitle": "鼓楼区新闻",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "publishtime": "2020-03-21 20:06:27.0",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "source": "",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "sourceID": 0,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "picType": 1,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "picB": "https://img1.fjdaily.com/app/column/2020-03/21/eb25f148-c2b8-40b7-b3cc-eb4d0b9044ea.jpg",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "picM": "",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "picS": "",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "countDiscuss": "0",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "countPraise": "2",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "countShare": "0",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "countClick": "0",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "countClickInitial": "0",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "vTime": "",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "relUrl": "https://img1.fjdaily.com/app/pad/content/content_886.html",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "contentUrl": "https://api1.fjdaily.com/app_if/getArticleContent?articleId=886",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "columnID": 84,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "columnIcon ": "http://218.66.59.25:3083/app/resource/202003/21/c74e3ee0-cbd1-487b-8a56-f804b1cdd6cf.jpg",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "columnName": "鼓楼区",</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">        "columnRssCount ": 0</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">      }</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    "adv": [],</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    "emojiUseCount": 0,</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">    "emojis": []</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">  }</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">}</msg>
+<msg timestamp="20200401 18:36:22.648" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200401 18:36:22.415" endtime="20200401 18:36:22.648"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200401 18:36:22.649" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x102d11700&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.649" endtime="20200401 18:36:22.649"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.649" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x102d11700&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.649" endtime="20200401 18:36:22.649"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:36:22.414" endtime="20200401 18:36:22.649"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${response_data.countDiscuss}</arg>
+</arguments>
+<assign>
+<var>${discusscount2}</var>
+</assign>
+<msg timestamp="20200401 18:36:22.650" level="INFO">${discusscount2} = 48</msg>
+<status status="PASS" starttime="20200401 18:36:22.650" endtime="20200401 18:36:22.650"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${discusscount2}&gt;${discusscount}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.650" endtime="20200401 18:36:22.650"></status>
+</kw>
+<kw name="Get DiscussView" library="DiscussView_Common">
+<doc>评论列表</doc>
+<arguments>
+<arg>${ROOTID}</arg>
+<arg>${PAGE}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>id</arg>
+<arg>${id}</arg>
+<arg>source</arg>
+<arg>${source}</arg>
+<arg>page</arg>
+<arg>${page}</arg>
+<arg>siteId</arg>
+<arg>${siteid}</arg>
+<arg>source</arg>
+<arg>${source}</arg>
+<arg>lastFileId</arg>
+<arg>${lastfileid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.651" endtime="20200401 18:36:22.651"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${DISCUSSVIEW_URI}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.652" level="INFO">GET Request using : uri=/discussView, params={'id': '887', 'source': '0', 'page': '1', 'siteId': '1', 'lastFileId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">  "data": {</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">    "list": [</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "userID": 103,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "userName": "用户108",</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "userIcon": "https://api1.fjdaily.com/app_if/amuc/api/member/getPortrait?uid=103",</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "articleID": 887,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "activityOpt": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "sourceType": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "parentID": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "parentUserID": 0,</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "content": "评论",</msg>
+<msg timestamp="20200401 18:36:22.751" level="INFO">        "countDiscuss": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "countPraise": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "longitude": 116,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "latitude": 39,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "location": "北京",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "created": "2020-03-30 11:23:00.0",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "id": 1771,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "info": {</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "articleUrl": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "articleUrlPad": "https://img1.fjdaily.com/app/index/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "parentUser": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "parentContent": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "parentTime": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "parentAtts": [],</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "parentType": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "picSmall": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "picMiddle": "",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">          "picBig": "https://img1.fjdaily.com/app/index/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "type": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "isWonderful": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "xyID": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "attachments": []</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">      },</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "userID": 103,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "userName": "用户108",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "userIcon": "https://api1.fjdaily.com/app_if/amuc/api/member/getPortrait?uid=103",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "articleID": 887,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "activityOpt": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "sourceType": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "parentID": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "parentUserID": 0,</msg>
+<msg timestamp="20200401 18:36:22.752" level="INFO">        "content": "评论",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "countDiscuss": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "countPraise": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "longitude": 116,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "latitude": 39,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "location": "北京",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "created": "2020-03-30 11:15:00.0",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "id": 1767,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "info": {</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "articleUrl": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "articleUrlPad": "https://img1.fjdaily.com/app/index/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "parentUser": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "parentContent": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "parentTime": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "parentAtts": [],</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "parentType": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "picSmall": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "picMiddle": "",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">          "picBig": "https://img1.fjdaily.com/app/index/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "type": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "isWonderful": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "xyID": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "attachments": []</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">      },</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "userID": 103,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "userName": "用户108",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "userIcon": "https://api1.fjdaily.com/app_if/amuc/api/member/getPortrait?uid=103",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "articleID": 887,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "activityOpt": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "sourceType": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "parentID": 0,</msg>
+<msg timestamp="20200401 18:36:22.753" level="INFO">        "parentUserID": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "content": "评论",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "countDiscuss": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "countPraise": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "longitude": 116,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "latitude": 39,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "location": "北京",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "created": "2020-03-30 11:10:30.0",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "id": 1763,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "info": {</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "articleUrl": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "articleUrlPad": "https://img1.fjdaily.com/app/index/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "parentUser": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "parentContent": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "parentTime": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "parentAtts": [],</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "parentType": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "picSmall": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "picMiddle": "",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">          "picBig": "https://img1.fjdaily.com/app/index/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "type": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "isWonderful": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "xyID": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "attachments": []</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">      },</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "userID": 103,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "userName": "用户108",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "userIcon": "https://api1.fjdaily.com/app_if/amuc/api/member/getPortrait?uid=103",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "articleID": 887,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.754" level="INFO">        "activityOpt": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "sourceType": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "parentID": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "parentUserID": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "content": "评论",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "countDiscuss": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "countPraise": 2,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "longitude": 116,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "latitude": 39,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "location": "北京",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "created": "2020-03-30 11:08:30.0",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "id": 1757,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "info": {</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "articleUrl": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "articleUrlPad": "https://img1.fjdaily.com/app/index/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "parentUser": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "parentContent": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "parentTime": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "parentAtts": [],</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "parentType": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "picSmall": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "picMiddle": "",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">          "picBig": "https://img1.fjdaily.com/app/index/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "type": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "isWonderful": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "xyID": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "attachments": []</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">      },</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">      {</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "userID": 103,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "userName": "用户108",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "userIcon": "https://api1.fjdaily.com/app_if/amuc/api/member/getPortrait?uid=103",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "articleID": 887,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "columnCasName": "首页~test栏目",</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "linkID": 0,</msg>
+<msg timestamp="20200401 18:36:22.755" level="INFO">        "activityOpt": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "sourceType": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "parentID": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "parentUserID": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "content": "评论",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "countDiscuss": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "countPraise": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "longitude": 116,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "latitude": 39,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "location": "北京",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "created": "2020-03-30 11:04:30.0",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "id": 1753,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "info": {</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "articleType": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "articleUrl": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "articleUrlPad": "https://img1.fjdaily.com/app/index/2020-03/21/content_887.html",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "parentUser": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "parentContent": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "parentTime": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "parentAtts": [],</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "parentType": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "rssType": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "picSmall": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "picMiddle": "",</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">          "picBig": "https://img1.fjdaily.com/app/index/2020-03/21/2c5d0662-ec84-45bf-9f17-7ce9ec1cc31f.png"</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        },</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "type": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "isWonderful": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "xyID": 0,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">        "attachments": []</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">      }</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">    ],</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">    "totalCount": 48,</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">    "hasMore": true</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">  }</msg>
+<msg timestamp="20200401 18:36:22.756" level="INFO">}</msg>
+<msg timestamp="20200401 18:36:22.757" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200401 18:36:22.651" endtime="20200401 18:36:22.757"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200401 18:36:22.757" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x102ce9ca0&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.757" endtime="20200401 18:36:22.757"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.757" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x102ce9ca0&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.757" endtime="20200401 18:36:22.757"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:36:22.650" endtime="20200401 18:36:22.758"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200401 18:36:22.758" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200401 18:36:22.758" endtime="20200401 18:36:22.758"></status>
+</kw>
+<kw name="Should Be True" library="BuiltIn">
+<doc>Fails if the given condition is not true.</doc>
+<arguments>
+<arg>${response_data.totalCount}&gt;${discusscount}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.758" endtime="20200401 18:36:22.758"></status>
+</kw>
+<tags>
+<tag>作者：黄羽</tag>
+<tag>新福建APP</tag>
+<tag>评论提交</tag>
+</tags>
+<status status="PASS" starttime="20200401 18:35:51.392" endtime="20200401 18:36:22.758" critical="yes"></status>
+</test>
+<test id="s1-t2" name="提交包括非法词的评论">
+<kw name="Post Discuss" library="Discuss_Common">
+<doc>提交评论，为简化，只需要输入评论的稿件ID和评论内容</doc>
+<arguments>
+<arg>${ROOTID}</arg>
+<arg>${CONTENT1}</arg>
+</arguments>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>rootID</arg>
+<arg>${rootid}</arg>
+<arg>content</arg>
+<arg>${content}</arg>
+<arg>userID</arg>
+<arg>${userid}</arg>
+<arg>userName</arg>
+<arg>${username}</arg>
+<arg>longitude</arg>
+<arg>${longitude}</arg>
+<arg>latitude</arg>
+<arg>${latitude}</arg>
+<arg>location</arg>
+<arg>${location}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>sourceType</arg>
+<arg>${sourcetype}</arg>
+<arg>channel</arg>
+<arg>${channel}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200401 18:36:22.761" level="INFO">${bodyData} = {'rootID': '887', 'content': '法轮功', 'userID': '103', 'userName': '用户108', 'longitude': '116.397128', 'latitude': '39.916527', 'location': '北京', 'siteid': '1', 'sourceType': '0', 'channel': '2', 'curVe...</msg>
+<status status="PASS" starttime="20200401 18:36:22.760" endtime="20200401 18:36:22.761"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>Content-Type=application/x-www-form-urlencoded</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.761" endtime="20200401 18:36:22.761"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${DISCUSS_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.762" level="INFO">POST Request using : uri=/discuss, params=None, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'Content-Type': 'application/x-www-form-urlencoded'} 
+data=rootID=887&amp;content=%E6%B3%95%E8%BD%AE%E5%8A%9F&amp;userID=103&amp;userName=%E7%94%A8%E6%88%B7108&amp;longitude=116.397128&amp;latitude=39.916527&amp;location=%E5%8C%97%E4%BA%AC&amp;siteid=1&amp;sourceType=0&amp;channel=2&amp;curVersions=1 
+json=None</msg>
+<msg timestamp="20200401 18:36:22.796" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">  "data": {</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">    "value": "true"</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">  }</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">}</msg>
+<msg timestamp="20200401 18:36:22.797" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200401 18:36:22.761" endtime="20200401 18:36:22.797"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200401 18:36:22.797" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x102d214c0&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.797" endtime="20200401 18:36:22.797"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200401 18:36:22.798" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x102d214c0&gt;</msg>
+<status status="PASS" starttime="20200401 18:36:22.797" endtime="20200401 18:36:22.798"></status>
+</kw>
+<status status="PASS" starttime="20200401 18:36:22.760" endtime="20200401 18:36:22.798"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200401 18:36:22.798" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200401 18:36:22.798" endtime="20200401 18:36:22.798"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.value}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200401 18:36:22.798" endtime="20200401 18:36:22.799"></status>
+</kw>
+<tags>
+<tag>作者：黄羽</tag>
+<tag>新福建APP</tag>
+<tag>评论提交</tag>
+</tags>
+<status status="PASS" starttime="20200401 18:36:22.759" endtime="20200401 18:36:22.799" critical="yes"></status>
+</test>
+<kw name="Fapi Delete All Sessions" library="FATL.FapiKeywords" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20200401 18:36:22.800" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20200401 18:36:22.799" endtime="20200401 18:36:22.800"></status>
+</kw>
+<doc>评论提交接口用例文档</doc>
+<status status="PASS" starttime="20200401 18:35:51.040" endtime="20200401 18:36:22.800"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0">Critical Tests</stat>
+<stat pass="2" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="0">作者：黄羽</stat>
+<stat pass="2" fail="0">新福建APP</stat>
+<stat pass="2" fail="0">评论提交</stat>
+</tag>
+<suite>
+<stat pass="2" fail="0" id="s1" name="PostDiscuss">PostDiscuss</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20200401 18:35:51.387" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/App_ArticleContent/ArticleContent_Common.robot': Non-existing setting 'Force Tags'.</msg>
+<msg timestamp="20200401 18:35:51.387" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/App_ArticleContent/ArticleContent_Common.robot': Non-existing setting '...'.</msg>
+</errors>
+</robot>

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot rpa="false" generated="20200329 17:42:56.637" generator="Robot 3.1.2 (Python 2.7.13 on win32)">
+<suite source="G:\Apitest\XFJ_api\App_Paper\GetPaperArticle.robot" id="s1" name="GetPaperArticle">
+<kw type="setup" name="Create Session Common" library="Common">
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${APPIF_URL}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.247" level="INFO">Creating Session using : alias=appif, url=http://218.66.59.25:3082/app_if, headers={'APITEST': u'1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" endtime="20200329 17:42:57.247" starttime="20200329 17:42:57.247"></status>
+</kw>
+<status status="PASS" endtime="20200329 17:42:57.247" starttime="20200329 17:42:57.237"></status>
+</kw>
+<test id="s1-t1" name="Paper article exist">
+<kw name="Get Paper Article" library="PaperArticle_Common">
+<doc>查看数字报详细接口</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>id</arg>
+<arg>${id}</arg>
+<arg>siteID</arg>
+<arg>1</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" endtime="20200329 17:42:57.247" starttime="20200329 17:42:57.247"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETPAPERARTICLE_URI}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.247" level="INFO">GET Request using : uri=/getPaperArticle, params={u'id': u'136', u'siteID': u'1', u'curVersions': u'1'}, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', 'APITEST': u'1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.12.4'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">  "status": 0, </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">  "message": "success", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">  "data": {</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "subtitle": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "attachment": [], </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "advClosed": -2147483648, </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "countClick": "0", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "countPraise": "0", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "images": [</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">      {</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">        "imagearray": [], </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">        "ref": "&lt;!--IMAGES#1--&gt;"</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">      }</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    ], </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "layoutId": "19", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "discussClosed": 0, </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "layout": "01", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "title": "导读", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "content": "&lt;p&gt; &lt;p&gt;到目前，我省已先后派出省、市、县三级医疗机构的医护人员及疾控人员共546人支援湖北。&lt;/p&gt;&lt;p&gt;向他们致敬！愿他们平安归来！&lt;/p&gt;&lt;p&gt;平凡英雄榜&lt;/p&gt;&lt;p&gt;◀第二版▶&lt;/p&gt; &lt;/p&gt;", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "source": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "version": 1581350400000, </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "articleType": 0, </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "introTitle": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "collaborator": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "editor": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "attAbstract": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "publishtime": "2020-02-11 00:00:00.0", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "fileId": "136", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "url": "http://218.66.59.25:3083/app/szb/fjrb/pc/202002/11/content_136.html", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "author": "", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "shareUrl": "http://218.66.59.25:3083/app/szb/fjrb/pad/202002/11/content_136.html", </msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">    "siteID": "1"</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">  }</msg>
+<msg timestamp="20200329 17:42:57.537" level="INFO">}</msg>
+<status status="PASS" endtime="20200329 17:42:57.537" starttime="20200329 17:42:57.247"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200329 17:42:57.537" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object instance at 0x04094D50&gt;</msg>
+<status status="PASS" endtime="20200329 17:42:57.537" starttime="20200329 17:42:57.537"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.537" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object instance at 0x04094D50&gt;</msg>
+<status status="PASS" endtime="20200329 17:42:57.537" starttime="20200329 17:42:57.537"></status>
+</kw>
+<status status="PASS" endtime="20200329 17:42:57.537" starttime="20200329 17:42:57.247"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.version}</arg>
+<arg>${version}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.537" level="INFO">Argument types are:
+&lt;type 'long'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20200329 17:42:57.537" starttime="20200329 17:42:57.537"></status>
+</kw>
+<status status="PASS" endtime="20200329 17:42:57.537" critical="yes" starttime="20200329 17:42:57.247"></status>
+</test>
+<test id="s1-t2" name="Paper article doesn't exist">
+<kw name="Get Paper Article" library="PaperArticle_Common">
+<doc>查看数字报详细接口</doc>
+<arguments>
+<arg>${ID0}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>id</arg>
+<arg>${id}</arg>
+<arg>siteID</arg>
+<arg>1</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" endtime="20200329 17:42:57.547" starttime="20200329 17:42:57.547"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETPAPERARTICLE_URI}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.547" level="INFO">GET Request using : uri=/getPaperArticle, params={u'id': u'12138', u'siteID': u'1', u'curVersions': u'1'}, timeout=None, allow_redirects=True
+headers={'Connection': 'keep-alive', 'APITEST': u'1', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'User-Agent': 'python-requests/2.12.4'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200329 17:42:57.597" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200329 17:42:57.597" level="INFO">  "status": -1, </msg>
+<msg timestamp="20200329 17:42:57.597" level="INFO">  "message": "Your server has down or target user not exist !", </msg>
+<msg timestamp="20200329 17:42:57.597" level="INFO">  "data": {}</msg>
+<msg timestamp="20200329 17:42:57.597" level="INFO">}</msg>
+<status status="PASS" endtime="20200329 17:42:57.597" starttime="20200329 17:42:57.547"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200329 17:42:57.607" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object instance at 0x0409CDF0&gt;</msg>
+<status status="PASS" endtime="20200329 17:42:57.607" starttime="20200329 17:42:57.607"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.607" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object instance at 0x0409CDF0&gt;</msg>
+<status status="PASS" endtime="20200329 17:42:57.607" starttime="20200329 17:42:57.607"></status>
+</kw>
+<status status="PASS" endtime="20200329 17:42:57.607" starttime="20200329 17:42:57.547"></status>
+</kw>
+<kw name="Fapi Status Should Be" library="FATL.FapiKeywords">
+<doc>Fapi response status code should be equal to the `expectedCode`</doc>
+<arguments>
+<arg>${RESULT0}</arg>
+</arguments>
+<msg timestamp="20200329 17:42:57.607" level="INFO">Actual status code is: -1</msg>
+<status status="PASS" endtime="20200329 17:42:57.607" starttime="20200329 17:42:57.607"></status>
+</kw>
+<status status="PASS" endtime="20200329 17:42:57.617" critical="yes" starttime="20200329 17:42:57.547"></status>
+</test>
+<kw type="teardown" name="Fapi Delete All Sessions" library="FATL.FapiKeywords">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20200329 17:42:57.627" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20200329 17:42:57.627" starttime="20200329 17:42:57.617"></status>
+</kw>
+<doc>该文档是读数字报详细页面接口用例文档</doc>
+<status status="PASS" endtime="20200329 17:42:57.627" starttime="20200329 17:42:56.637"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="2">Critical Tests</stat>
+<stat fail="0" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" id="s1" name="GetPaperArticle" pass="2">GetPaperArticle</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

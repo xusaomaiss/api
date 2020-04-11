@@ -1,0 +1,1781 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on darwin)" generated="20200328 16:09:21.074" rpa="false">
+<suite id="s1" name="GetColumns" source="/Users/linhai/PycharmProjects/API/App_Column/GetColumns.robot">
+<kw name="Create Session Common" library="Common" type="setup">
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${APPIF_URL}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:21.384" level="INFO">Creating Session using : alias=appif, url=http://218.66.59.25:3082/app_if, headers={'APITEST': '1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200328 16:09:21.383" endtime="20200328 16:09:21.384"></status>
+</kw>
+<status status="PASS" starttime="20200328 16:09:21.383" endtime="20200328 16:09:21.384"></status>
+</kw>
+<test id="s1-t1" name="读取所有栏目数据,接口返回所有栏目信息">
+<kw name="Get Columns" library="Column_Common">
+<doc>获取栏目数据接口</doc>
+<arguments>
+<arg>${ID}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>parentColumnId</arg>
+<arg>${parentcolumnid}</arg>
+<arg>siteId</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200328 16:09:21.386" endtime="20200328 16:09:21.386"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETCOLUMNS_URI}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:21.386" level="INFO">GET Request using : uri=/getColumns, params={'parentColumnId': '0', 'siteId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">  "data": {</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">    "version": 1584528481000,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">    "columns": [</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "columnId": 1,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "columnID": 1,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "columnName": "首页",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/202003/16/346de68c-715a-4342-869c-9c35f0a0bf8f.png",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/202003/16/32d717c5-b2cc-43cf-867d-768cd1718d3b.png",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "orderId": 1,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "casNames": "首页",</msg>
+<msg timestamp="20200328 16:09:21.481" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "columnStyle": "227",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.482" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnId": 8,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnID": 8,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnName": "福建号",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "orderId": 2,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "casNames": "福建号",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "columnStyle": "410",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.483" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnId": 9,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnID": 9,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnName": "活动",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/202003/16/47462502-3b29-4b28-9a09-ee858f58b457.png",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/202003/16/bea2ce72-8c01-40af-b9db-3fae16858723.png",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "orderId": 4,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "casNames": "活动",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "columnStyle": "221",</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.484" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "columnId": 6,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "columnID": 6,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "columnName": "我的",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/202003/16/075b67fc-b482-415b-9fa6-f9a299c3ee48.png",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/202003/16/ea4fdb7e-41a3-49c1-9c85-8e4b3618843b.png",</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "orderId": 5,</msg>
+<msg timestamp="20200328 16:09:21.485" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "casNames": "我的",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "columnStyle": "218",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.486" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnId": 11,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnID": 11,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnName": "专题库",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/xy/202003/05/t2_(27X30X426X163)6382e28d-fa76-4536-b949-cc461c51b3fe.jpg",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/xy/202003/05/t2_(27X30X426X163)6382e28d-fa76-4536-b949-cc461c51b3fe.jpg",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "orderId": 8,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "description": "这个可能是出现盖住半个字的问题吧？我这用的方法跟你的差不多 出现了只遮住了半个字的问题；这个可能是出现盖住半个字的问题吧？我这用的方法跟你的差不多 出现了只遮住了半个字的问题；这个可能是出现盖住半个字的问题吧？我这用的方法跟你的差不多 出现了只遮住了半个字的问题",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "casNames": "专题库",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "columnStyle": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.487" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "level": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "columnLevel": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "columnId": 26,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "columnID": 26,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "columnName": "读报",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "orderId": 9,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "casNames": "读报",</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:21.488" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "columnType": "4005",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "columnStyle": "102",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">      }</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">    ],</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">    "topColumns": []</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">  }</msg>
+<msg timestamp="20200328 16:09:21.489" level="INFO">}</msg>
+<status status="PASS" starttime="20200328 16:09:21.386" endtime="20200328 16:09:21.490"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200328 16:09:21.490" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106c7dc10&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:21.490" endtime="20200328 16:09:21.490"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:21.491" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106c7dc10&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:21.490" endtime="20200328 16:09:21.491"></status>
+</kw>
+<status status="PASS" starttime="20200328 16:09:21.385" endtime="20200328 16:09:21.491"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.columns[0].columnName}</arg>
+<arg>${RESULT}</arg>
+</arguments>
+<status status="PASS" starttime="20200328 16:09:21.491" endtime="20200328 16:09:21.492"></status>
+</kw>
+<tags>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+<tag>栏目接口/读取子栏目（张进）</tag>
+</tags>
+<status status="PASS" starttime="20200328 16:09:21.384" endtime="20200328 16:09:21.492" critical="yes"></status>
+</test>
+<test id="s1-t2" name="读取首页下的栏目数据，接口返回首页下的所有栏目信息">
+<kw name="Get Columns" library="Column_Common">
+<doc>获取栏目数据接口</doc>
+<arguments>
+<arg>${ID0}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>parentColumnId</arg>
+<arg>${parentcolumnid}</arg>
+<arg>siteId</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200328 16:09:21.494" endtime="20200328 16:09:21.495"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETCOLUMNS_URI}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:21.495" level="INFO">GET Request using : uri=/getColumns, params={'parentColumnId': '1', 'siteId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">  "data": {</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">    "version": 1584935848000,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">    "columns": [</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "columnId": 5,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "columnID": 5,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "columnName": "头条",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "topCount": 3,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/xy/202003/06/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/xy/202003/06/4fff70e1-1028-49b8-9c48-12637e3c7f7f.jpg",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "orderId": 1,</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "description": "测试大图大图测试大图大图测试大图大图测试大图大图测试大图大图测试大图大图测试大图大图",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.133" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "casNames": "首页~头条",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showPraiseCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showDiscussCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnId": 15,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnID": 15,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "columnName": "V视",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.134" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "orderId": 3,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "casNames": "首页~V视",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "columnStyle": "203",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.135" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnId": 17,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnID": 17,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnName": "图集",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "orderId": 5,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "casNames": "首页~图集",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "columnStyle": "202",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.136" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnId": 18,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnID": 18,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnName": "专题",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/xy/202003/23/33d46956-9672-4821-9f06-20c6bed0ea66.jpg",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/xy/202003/23/33d46956-9672-4821-9f06-20c6bed0ea66.jpg",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "orderId": 6,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "casNames": "首页~专题",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.137" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnId": 16,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnID": 16,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnName": "直播",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "orderId": 7,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "casNames": "首页~直播",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "columnStyle": "225",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.138" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnId": 19,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnID": 19,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnName": "问吧",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "orderId": 8,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "casNames": "首页~问吧",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "columnStyle": "107",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.139" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnId": 20,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnID": 20,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnName": "问政",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "orderId": 9,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "casNames": "首页~问政",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "columnStyle": "107",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.140" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnId": 25,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnID": 25,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnName": "福建号",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "orderId": 10,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "casNames": "首页~福建号",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "columnStyle": "215",</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.141" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "columnId": 31,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "columnID": 31,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "columnName": "翔宇号挂接栏目",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "orderId": 11,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "casNames": "首页~翔宇号挂接栏目",</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.142" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "columnStyle": "215",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "columnId": 47,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "columnID": 47,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "columnName": "荐读",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "orderId": 12,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.143" level="INFO">        "casNames": "首页~荐读",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnId": 48,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnID": 48,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "columnName": "地方",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "topCount": 5,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "orderId": 13,</msg>
+<msg timestamp="20200328 16:09:22.144" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "casNames": "首页~地方",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "columnStyle": "205",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showStyle": 1,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.145" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnId": 49,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnID": 49,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnName": "图文",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "topCount": 3,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "orderId": 15,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "casNames": "首页~图文",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.146" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnId": 51,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnID": 51,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnName": "测试栏目0317",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "topCount": 3,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "orderId": 16,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "casNames": "首页~测试栏目0317",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.147" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnId": 77,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnID": 77,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnName": "test栏目",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "topCount": 5,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "phoneIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "padIcon": "http://218.66.59.25:3083/app/resource/xy/202003/21/87129be8-439d-405b-80ac-4792fc5cd8ed.jpg",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "orderId": 17,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "casNames": "首页~test栏目",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.148" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnId": 52,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnID": 52,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnName": "视频",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "orderId": 18,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "description": "专用于视频相关文章",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "casNames": "首页~视频",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "columnStyle": "227",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.149" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnId": 53,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnID": 53,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnName": "测试栏目无审核",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "orderId": 19,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "casNames": "首页~测试栏目无审核",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnType": "4003",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "columnStyle": "227",</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.150" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "columnId": 61,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "columnID": 61,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "columnName": "政情栏目",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.151" level="INFO">        "orderId": 20,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "casNames": "首页~政情栏目",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "columnStyle": "108",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "columnId": 69,</msg>
+<msg timestamp="20200328 16:09:22.152" level="INFO">        "columnID": 69,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "columnName": "产品出没",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "topCount": 3,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "orderId": 21,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "description": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "casNames": "首页~产品出没",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.153" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnId": 78,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnID": 78,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnName": "测试栏目0318",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "topCount": 5,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "orderId": 22,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "casNames": "首页~测试栏目0318",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.154" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnId": 80,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnID": 80,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnName": "yll测试栏目",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "topCount": 5,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "orderId": 24,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "casNames": "首页~yll测试栏目",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showReadCount": 1,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.155" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnId": 81,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnID": 81,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnName": "测试1",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "topCount": 4,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "orderId": 25,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "casNames": "首页~测试1",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showPubTime": 1,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.156" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">      },</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">      {</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "isdelete": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "level": 1,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "columnLevel": 1,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "columnId": 91,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "columnID": 91,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "columnName": "测试栏目0323",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "topCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "phoneIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "padIcon": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "orderId": 26,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "keyword": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "description": "2月7日0-24时，福建省报告新增新型冠状病毒肺炎确诊病例15例。",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "linkUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "isForbidden": false,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "casNames": "首页~测试栏目0323",</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "rssCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "appFixed": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "appShow": 1,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "synXCX": 0,</msg>
+<msg timestamp="20200328 16:09:22.157" level="INFO">        "isScreen": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "columnType": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "columnStyle": "101",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showReadCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showPubTime": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showPraiseCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showDiscussCount": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showStyle": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "topPic": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showCard": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "cardUrl": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showColumnPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "onlyShowPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showReadCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showPubTimePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showPraiseCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showDiscussCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showStylePad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "topPicPad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showCardPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "cardUrlPad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "topCountPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "showMoreTipPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "appTypePadID": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "appTypePad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "timeAxisIconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "timeAxisColorPad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "iconPad": "",</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "isIncomPad": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "hasExtField": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "iconBigType": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "aggId": 0,</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">        "appNormal": -2147483648</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">      }</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">    ],</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">    "topColumns": []</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">  }</msg>
+<msg timestamp="20200328 16:09:22.158" level="INFO">}</msg>
+<status status="PASS" starttime="20200328 16:09:21.495" endtime="20200328 16:09:22.158"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200328 16:09:22.159" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106cf7fd0&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:22.158" endtime="20200328 16:09:22.159"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:22.159" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106cf7fd0&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:22.159" endtime="20200328 16:09:22.159"></status>
+</kw>
+<status status="PASS" starttime="20200328 16:09:21.494" endtime="20200328 16:09:22.159"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.columns[0].columnName}</arg>
+<arg>${RESULT0}</arg>
+</arguments>
+<status status="PASS" starttime="20200328 16:09:22.160" endtime="20200328 16:09:22.160"></status>
+</kw>
+<tags>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+<tag>栏目接口/读取子栏目（张进）</tag>
+</tags>
+<status status="PASS" starttime="20200328 16:09:21.492" endtime="20200328 16:09:22.160" critical="yes"></status>
+</test>
+<test id="s1-t3" name="读取的栏目不存在时，接口栏目数据返回为空">
+<kw name="Get Columns" library="Column_Common">
+<doc>获取栏目数据接口</doc>
+<arguments>
+<arg>${ID1}</arg>
+</arguments>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>parentColumnId</arg>
+<arg>${parentcolumnid}</arg>
+<arg>siteId</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200328 16:09:22.162" endtime="20200328 16:09:22.162"></status>
+</kw>
+<kw name="Fapi Get" library="FATL.FapiKeywords">
+<doc>Send a GET request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${GETCOLUMNS_URI}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:22.162" level="INFO">GET Request using : uri=/getColumns, params={'parentColumnId': '6666', 'siteId': '1', 'curVersions': '1'}, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1'} 
+data=None 
+json=None</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">  "data": {</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">    "version": 0,</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">    "columns": [],</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">    "topColumns": []</msg>
+<msg timestamp="20200328 16:09:22.636" level="INFO">  }</msg>
+<msg timestamp="20200328 16:09:22.637" level="INFO">}</msg>
+<status status="PASS" starttime="20200328 16:09:22.162" endtime="20200328 16:09:22.637"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200328 16:09:22.637" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106d161f0&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:22.637" endtime="20200328 16:09:22.637"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:22.638" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106d161f0&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:22.638" endtime="20200328 16:09:22.638"></status>
+</kw>
+<status status="PASS" starttime="20200328 16:09:22.162" endtime="20200328 16:09:22.638"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.columns}</arg>
+<arg>${RESULT1}</arg>
+</arguments>
+<msg timestamp="20200328 16:09:22.639" level="INFO">Argument types are:
+&lt;class 'list'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" starttime="20200328 16:09:22.638" endtime="20200328 16:09:22.639"></status>
+</kw>
+<tags>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+<tag>栏目接口/读取子栏目（张进）</tag>
+</tags>
+<status status="PASS" starttime="20200328 16:09:22.160" endtime="20200328 16:09:22.639" critical="yes"></status>
+</test>
+<kw name="Fapi Delete All Sessions" library="FATL.FapiKeywords" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20200328 16:09:22.640" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20200328 16:09:22.640" endtime="20200328 16:09:22.640"></status>
+</kw>
+<doc>该文档是获取栏目模块接口用例文档</doc>
+<status status="PASS" starttime="20200328 16:09:21.075" endtime="20200328 16:09:22.640"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0">Critical Tests</stat>
+<stat pass="3" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0">作者：张鹏</stat>
+<stat pass="3" fail="0">冒烟集-新福建APP</stat>
+<stat pass="3" fail="0">栏目接口/读取子栏目（张进）</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" id="s1" name="GetColumns">GetColumns</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20200328 16:09:21.094" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/App_Column/Column_Common.robot': Non-existing setting 'Force Tags'.</msg>
+<msg timestamp="20200328 16:09:21.094" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/App_Column/Column_Common.robot': Non-existing setting '...'.</msg>
+</errors>
+</robot>

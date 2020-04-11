@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.1 (Python 3.6.5 on win32)" generated="20200326 15:15:23.228" rpa="false">
+<suite id="s1" name="LoginByPhone" source="D:\XFJ\API\App_Sso\LoginByPhone.robot">
+<kw name="Create Sso Session Common" library="Common" type="setup">
+<kw name="Fapi Create Session" library="FATL">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${SSO_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.745" level="INFO">Creating Session using : alias=sso, url=http://218.66.59.25:3083/sso-app, headers={'APITEST': '1'},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200326 15:15:23.744" endtime="20200326 15:15:23.745"></status>
+</kw>
+<status status="PASS" starttime="20200326 15:15:23.744" endtime="20200326 15:15:23.745"></status>
+</kw>
+<test id="s1-t1" name="输入正确的手机号进行快捷登录，登录成功接口返回账号相关数据">
+<kw name="Login By Phone" library="Sso_Common">
+<doc>手机号快捷登录接口</doc>
+<arguments>
+<arg>${PHONE}</arg>
+</arguments>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.754" level="INFO">${random} = 8222646126</msg>
+<status status="PASS" starttime="20200326 15:15:23.754" endtime="20200326 15:15:23.754"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.755" level="INFO">${typerandom} = 8222646126</msg>
+<status status="PASS" starttime="20200326 15:15:23.754" endtime="20200326 15:15:23.755"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.755" level="INFO">${random} = 8222646126</msg>
+<status status="PASS" starttime="20200326 15:15:23.753" endtime="20200326 15:15:23.755"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.756" level="INFO">${time} = 1585206923756</msg>
+<status status="PASS" starttime="20200326 15:15:23.756" endtime="20200326 15:15:23.756"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.757" level="INFO">${typetime} = 1585206923756</msg>
+<status status="PASS" starttime="20200326 15:15:23.756" endtime="20200326 15:15:23.757"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.757" level="INFO">${timestamp} = 1585206923756</msg>
+<status status="PASS" starttime="20200326 15:15:23.755" endtime="20200326 15:15:23.757"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.758" level="INFO">${secret} = 9af8161acaf6f3a9e804101c3d945389</msg>
+<status status="PASS" starttime="20200326 15:15:23.757" endtime="20200326 15:15:23.758"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>phone</arg>
+<arg>${phone}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.758" endtime="20200326 15:15:23.758"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;siteid=${siteid}&amp;phone=${phone}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.759" level="INFO">${program_sign} = 9e605363083bb0631de64b3c57f63efb</msg>
+<status status="PASS" starttime="20200326 15:15:23.758" endtime="20200326 15:15:23.759"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>devid,siteid,phone</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.759" level="INFO">${proParams} = devid,siteid,phone</msg>
+<status status="PASS" starttime="20200326 15:15:23.759" endtime="20200326 15:15:23.759"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.760" endtime="20200326 15:15:23.760"></status>
+</kw>
+<kw name="Fapi Post" library="FATL">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SSO_ALIAS}</arg>
+<arg>${LOGINBYPHONE_URI}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.897" level="INFO">Post Request using : alias=sso, uri=/api/loginByPhone, data=&lt;empty&gt;, headers={'APITEST': '1', 'program-sign': '9e605363083bb0631de64b3c57f63efb', 'devid': '429A9EC0-58DE-41D6-B79A-4E073350FA38', 'random': '8222646126', 'timestamp': '1585206923756', 'token': '', 'version': '1.0.22', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'devid,siteid,phone'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20200326 15:15:23.897" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  "code": 1,</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  "msg": "success",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  "value": {</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "birthday": "2000-01-01",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "address": "",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "sex": "0",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "userid": "133",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "token": "5bc1a26d4b97ac94b2f35ab4ee45017b",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "head": "",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "uid": "138",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "score": "0",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "areaCode": "0086",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "isOpen": 0,</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "phone": "13545396666",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "isFirstOpen": "0",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "nickname": "用户138",</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "isDefPassword": 1,</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">    "username": "用户138"</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  },</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  "status": 0,</msg>
+<msg timestamp="20200326 15:15:23.898" level="INFO">  "message": "success",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">  "data": {</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "birthday": "2000-01-01",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "address": "",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "sex": "0",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "userid": "133",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "token": "5bc1a26d4b97ac94b2f35ab4ee45017b",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "head": "",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "uid": "138",</msg>
+<msg timestamp="20200326 15:15:23.899" level="INFO">    "score": "0",</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "areaCode": "0086",</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "isOpen": 0,</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "phone": "13545396666",</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "isFirstOpen": "0",</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "nickname": "用户138",</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "isDefPassword": 1,</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">    "username": "用户138"</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">  },</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">  "path": null,</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">  "error": null,</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">  "timestamp": 1585206922719</msg>
+<msg timestamp="20200326 15:15:23.900" level="INFO">}</msg>
+<status status="PASS" starttime="20200326 15:15:23.760" endtime="20200326 15:15:23.900"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.901" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A38295C048&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:23.900" endtime="20200326 15:15:23.901"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.902" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A38295C048&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:23.901" endtime="20200326 15:15:23.902"></status>
+</kw>
+<status status="PASS" starttime="20200326 15:15:23.753" endtime="20200326 15:15:23.902"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.phone}</arg>
+<arg>${PHONE}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.903" endtime="20200326 15:15:23.904"></status>
+</kw>
+<tags>
+<tag>sso-app接口/手机号快捷登录（孙安）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+</tags>
+<status status="PASS" starttime="20200326 15:15:23.745" endtime="20200326 15:15:23.904" critical="yes"></status>
+</test>
+<test id="s1-t2" name="输入不存在的手机号进行快捷登录，接口返回手机号格式不正确">
+<kw name="Login By Phone" library="Sso_Common">
+<doc>手机号快捷登录接口</doc>
+<arguments>
+<arg>${PHONE0}</arg>
+</arguments>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.911" level="INFO">${random} = 9774377552</msg>
+<status status="PASS" starttime="20200326 15:15:23.911" endtime="20200326 15:15:23.911"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.912" level="INFO">${typerandom} = 9774377552</msg>
+<status status="PASS" starttime="20200326 15:15:23.912" endtime="20200326 15:15:23.912"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.912" level="INFO">${random} = 9774377552</msg>
+<status status="PASS" starttime="20200326 15:15:23.911" endtime="20200326 15:15:23.912"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.913" level="INFO">${time} = 1585206923913</msg>
+<status status="PASS" starttime="20200326 15:15:23.913" endtime="20200326 15:15:23.913"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.914" level="INFO">${typetime} = 1585206923913</msg>
+<status status="PASS" starttime="20200326 15:15:23.913" endtime="20200326 15:15:23.914"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.914" level="INFO">${timestamp} = 1585206923913</msg>
+<status status="PASS" starttime="20200326 15:15:23.912" endtime="20200326 15:15:23.914"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.914" level="INFO">${secret} = 6a18d18a46740af81e80a5707cf7abda</msg>
+<status status="PASS" starttime="20200326 15:15:23.914" endtime="20200326 15:15:23.914"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>phone</arg>
+<arg>${phone}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.914" endtime="20200326 15:15:23.915"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;siteid=${siteid}&amp;phone=${phone}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.915" level="INFO">${program_sign} = 3196412b74ebd7b96c98d544a7b6708c</msg>
+<status status="PASS" starttime="20200326 15:15:23.915" endtime="20200326 15:15:23.915"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>devid,siteid,phone</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.916" level="INFO">${proParams} = devid,siteid,phone</msg>
+<status status="PASS" starttime="20200326 15:15:23.916" endtime="20200326 15:15:23.916"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.916" endtime="20200326 15:15:23.916"></status>
+</kw>
+<kw name="Fapi Post" library="FATL">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SSO_ALIAS}</arg>
+<arg>${LOGINBYPHONE_URI}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.982" level="INFO">Post Request using : alias=sso, uri=/api/loginByPhone, data=&lt;empty&gt;, headers={'APITEST': '1', 'program-sign': '3196412b74ebd7b96c98d544a7b6708c', 'devid': '429A9EC0-58DE-41D6-B79A-4E073350FA38', 'random': '9774377552', 'timestamp': '1585206923913', 'token': '', 'version': '1.0.22', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'devid,siteid,phone'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "msg": "phone_format_error",</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "value": {},</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "message": "phone_format_error",</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "data": {},</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "path": "/sso-app/api/loginByPhone",</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "error": "手机号格式不正确",</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">  "timestamp": 1585206922799</msg>
+<msg timestamp="20200326 15:15:23.982" level="INFO">}</msg>
+<status status="PASS" starttime="20200326 15:15:23.917" endtime="20200326 15:15:23.982"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.983" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A382569E10&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:23.983" endtime="20200326 15:15:23.983"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.983" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A382569E10&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:23.983" endtime="20200326 15:15:23.983"></status>
+</kw>
+<status status="PASS" starttime="20200326 15:15:23.910" endtime="20200326 15:15:23.984"></status>
+</kw>
+<kw name="Fapi Status Should Be" library="FATL">
+<doc>Fapi response status code should be equal to the `expectedCode`</doc>
+<arguments>
+<arg>${RESULT}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:23.985" level="INFO">Actual status code is: -1</msg>
+<status status="PASS" starttime="20200326 15:15:23.984" endtime="20200326 15:15:23.985"></status>
+</kw>
+<tags>
+<tag>sso-app接口/手机号快捷登录（孙安）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+</tags>
+<status status="PASS" starttime="20200326 15:15:23.906" endtime="20200326 15:15:23.985" critical="yes"></status>
+</test>
+<test id="s1-t3" name="输入字符进行快捷登录，接口返回手机号格式不正确">
+<kw name="Login By Phone" library="Sso_Common">
+<doc>手机号快捷登录接口</doc>
+<arguments>
+<arg>${PHONE1}</arg>
+</arguments>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.992" level="INFO">${random} = 7873594267</msg>
+<status status="PASS" starttime="20200326 15:15:23.991" endtime="20200326 15:15:23.992"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.992" level="INFO">${typerandom} = 7873594267</msg>
+<status status="PASS" starttime="20200326 15:15:23.992" endtime="20200326 15:15:23.992"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.992" level="INFO">${random} = 7873594267</msg>
+<status status="PASS" starttime="20200326 15:15:23.991" endtime="20200326 15:15:23.992"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.993" level="INFO">${time} = 1585206923993</msg>
+<status status="PASS" starttime="20200326 15:15:23.993" endtime="20200326 15:15:23.993"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.994" level="INFO">${typetime} = 1585206923993</msg>
+<status status="PASS" starttime="20200326 15:15:23.994" endtime="20200326 15:15:23.994"></status>
+</kw>
+<msg timestamp="20200326 15:15:23.994" level="INFO">${timestamp} = 1585206923993</msg>
+<status status="PASS" starttime="20200326 15:15:23.993" endtime="20200326 15:15:23.994"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.995" level="INFO">${secret} = 7379b820cc6305551d7fad59bdbb9aca</msg>
+<status status="PASS" starttime="20200326 15:15:23.994" endtime="20200326 15:15:23.995"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>phone</arg>
+<arg>${phone}</arg>
+<arg>siteid</arg>
+<arg>${siteid}</arg>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.995" endtime="20200326 15:15:23.995"></status>
+</kw>
+<kw name="Md 5" library="Secret">
+<arguments>
+<arg>devid=${devid}&amp;siteid=${siteid}&amp;phone=${phone}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.996" level="INFO">${program_sign} = 7d4721cad0df0caa93cd532de2be3180</msg>
+<status status="PASS" starttime="20200326 15:15:23.995" endtime="20200326 15:15:23.996"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>devid,siteid,phone</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200326 15:15:23.996" level="INFO">${proParams} = devid,siteid,phone</msg>
+<status status="PASS" starttime="20200326 15:15:23.996" endtime="20200326 15:15:23.996"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${devid}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200326 15:15:23.997" endtime="20200326 15:15:23.997"></status>
+</kw>
+<kw name="Fapi Post" library="FATL">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${SSO_ALIAS}</arg>
+<arg>${LOGINBYPHONE_URI}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:24.047" level="INFO">Post Request using : alias=sso, uri=/api/loginByPhone, data=&lt;empty&gt;, headers={'APITEST': '1', 'program-sign': '7d4721cad0df0caa93cd532de2be3180', 'devid': '429A9EC0-58DE-41D6-B79A-4E073350FA38', 'random': '7873594267', 'timestamp': '1585206923993', 'token': '', 'version': '1.0.22', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'devid,siteid,phone'}, files=None, allow_redirects=True </msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "msg": "phone_format_error",</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "value": {},</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "message": "phone_format_error",</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "data": {},</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "path": "/sso-app/api/loginByPhone",</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "error": "手机号格式不正确",</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">  "timestamp": 1585206922873</msg>
+<msg timestamp="20200326 15:15:24.047" level="INFO">}</msg>
+<status status="PASS" starttime="20200326 15:15:23.997" endtime="20200326 15:15:24.047"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200326 15:15:24.048" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A3829865C0&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:24.048" endtime="20200326 15:15:24.048"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:24.049" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x000002A3829865C0&gt;</msg>
+<status status="PASS" starttime="20200326 15:15:24.048" endtime="20200326 15:15:24.049"></status>
+</kw>
+<status status="PASS" starttime="20200326 15:15:23.990" endtime="20200326 15:15:24.049"></status>
+</kw>
+<kw name="Fapi Status Should Be" library="FATL">
+<doc>Fapi response status code should be equal to the `expectedCode`</doc>
+<arguments>
+<arg>${RESULT}</arg>
+</arguments>
+<msg timestamp="20200326 15:15:24.050" level="INFO">Actual status code is: -1</msg>
+<status status="PASS" starttime="20200326 15:15:24.050" endtime="20200326 15:15:24.050"></status>
+</kw>
+<tags>
+<tag>sso-app接口/手机号快捷登录（孙安）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-新福建APP</tag>
+</tags>
+<status status="PASS" starttime="20200326 15:15:23.986" endtime="20200326 15:15:24.050" critical="yes"></status>
+</test>
+<kw name="Fapi Delete All Sessions" library="FATL" type="teardown">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20200326 15:15:24.052" level="INFO">Delete All Sessions</msg>
+<status status="PASS" starttime="20200326 15:15:24.052" endtime="20200326 15:15:24.052"></status>
+</kw>
+<doc>该文档是获取App配置模块接口用例文档</doc>
+<status status="PASS" starttime="20200326 15:15:23.232" endtime="20200326 15:15:24.052"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="3" fail="0">Critical Tests</stat>
+<stat pass="3" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="3" fail="0">sso-app接口/手机号快捷登录（孙安）</stat>
+<stat pass="3" fail="0">作者：张鹏</stat>
+<stat pass="3" fail="0">冒烟集-新福建APP</stat>
+</tag>
+<suite>
+<stat pass="3" fail="0" id="s1" name="LoginByPhone">LoginByPhone</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20200326 15:15:23.262" level="ERROR">Error in file 'D:\XFJ\API\App_Sso\Sso_Common.robot': Non-existing setting 'Force Tags'.</msg>
+<msg timestamp="20200326 15:15:23.262" level="ERROR">Error in file 'D:\XFJ\API\App_Sso\Sso_Common.robot': Non-existing setting '...'.</msg>
+<msg timestamp="20200326 15:15:23.737" level="ERROR">Error in file 'D:\XFJ\API\App_Sso\Random_Time.robot': Importing test library 'MyLib' failed: ModuleNotFoundError: No module named 'MyLib'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  D:\python\Scripts\robot.exe
+  d:\python\python36.zip
+  d:\python\DLLs
+  d:\python\lib
+  d:\python
+  d:\python\lib\site-packages
+  d:\python\lib\site-packages\win32
+  d:\python\lib\site-packages\win32\lib
+  d:\python\lib\site-packages\Pythonwin</msg>
+</errors>
+</robot>

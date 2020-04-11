@@ -1,0 +1,1360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.8.1 on darwin)" generated="20200409 15:23:52.484" rpa="false">
+<suite id="s1" name="Bind" source="/Users/linhai/PycharmProjects/API/XY_SSO/Bind.robot">
+<test id="s1-t1" name="同一个账号已绑定第三方账号，继续绑定该三方账号时接口提示&quot;用户已经绑定该平台其他开放账号&quot;">
+<kw name="Bind" library="SSOCommon">
+<doc>本地手机号绑定第三方账号</doc>
+<arguments>
+<arg>${UID}</arg>
+<arg>${PROVIDER_QQ}</arg>
+<arg>${OID_QQ}</arg>
+<arg>${NICKNAME_QQ}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:52.812" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:52.812" endtime="20200409 15:23:52.812"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.814" level="INFO">${random} = 8008982334</msg>
+<status status="PASS" starttime="20200409 15:23:52.813" endtime="20200409 15:23:52.814"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.814" level="INFO">${typerandom} = 8008982334</msg>
+<status status="PASS" starttime="20200409 15:23:52.814" endtime="20200409 15:23:52.814"></status>
+</kw>
+<msg timestamp="20200409 15:23:52.814" level="INFO">${random} = 8008982334</msg>
+<status status="PASS" starttime="20200409 15:23:52.813" endtime="20200409 15:23:52.814"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.814" level="INFO">${time} = 1586417032814</msg>
+<status status="PASS" starttime="20200409 15:23:52.814" endtime="20200409 15:23:52.815"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.815" level="INFO">${typetime} = 1586417032814</msg>
+<status status="PASS" starttime="20200409 15:23:52.815" endtime="20200409 15:23:52.815"></status>
+</kw>
+<msg timestamp="20200409 15:23:52.815" level="INFO">${timestamp} = 1586417032814</msg>
+<status status="PASS" starttime="20200409 15:23:52.814" endtime="20200409 15:23:52.815"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.815" level="INFO">${secret} = 2614065c3352a16dcf5f59d5f6fa2e80</msg>
+<status status="PASS" starttime="20200409 15:23:52.815" endtime="20200409 15:23:52.815"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;nickname=${nickname}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.816" level="INFO">${program_sign} = e6468e0269eb145100c44613cfe54881</msg>
+<status status="PASS" starttime="20200409 15:23:52.815" endtime="20200409 15:23:52.816"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,nickname,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.816" level="INFO">${proParams} = uid,provider,nickname,oid</msg>
+<status status="PASS" starttime="20200409 15:23:52.816" endtime="20200409 15:23:52.816"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:52.816" endtime="20200409 15:23:52.816"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:52.816" endtime="20200409 15:23:52.816"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+<arg>nickname</arg>
+<arg>${nickname}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:52.817" level="INFO">${bodyData} = {'uid': '462', 'provider': 'tencent_QQ', 'oid': 'F9C1B81FAF40B6F9AFC4B3EB935D2722', 'nickname': '张鹏'}</msg>
+<status status="PASS" starttime="20200409 15:23:52.817" endtime="20200409 15:23:52.817"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${BIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:52.817" level="INFO">POST Request using : uri=/api/bind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': 'e6468e0269eb145100c44613cfe54881', 'devid': '', 'random': '8008982334', 'timestamp': '1586417032814', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'} 
+data=uid=462&amp;provider=tencent_QQ&amp;oid=F9C1B81FAF40B6F9AFC4B3EB935D2722&amp;nickname=%E5%BC%A0%E9%B9%8F 
+json=None</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:53.110" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">  "path": "/sso-app/api/bind",</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">  "error": "用户身份不合法",</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">  "timestamp": 1586417033098</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:53.111" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:52.817" endtime="20200409 15:23:53.111"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.112" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x1050c3bb0&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.111" endtime="20200409 15:23:53.112"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.114" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x1050c3bb0&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.112" endtime="20200409 15:23:53.114"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:52.812" endtime="20200409 15:23:53.114"></status>
+</kw>
+<kw name="Fapi Status Should Be" library="FATL.FapiKeywords">
+<doc>Fapi response status code should be equal to the `expectedCode`</doc>
+<arguments>
+<arg>${RESULT}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.114" level="INFO">Actual status code is: -1</msg>
+<status status="PASS" starttime="20200409 15:23:53.114" endtime="20200409 15:23:53.114"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="PASS" starttime="20200409 15:23:52.809" endtime="20200409 15:23:53.114" critical="yes"></status>
+</test>
+<test id="s1-t2" name="同一个账号已绑定第三方账号，继续绑定其他三方账号绑定成功">
+<kw name="Bind" library="SSOCommon">
+<doc>本地手机号绑定第三方账号</doc>
+<arguments>
+<arg>${UID}</arg>
+<arg>${PROVIDER_WX}</arg>
+<arg>${OID_WX}</arg>
+<arg>${NICKNAME_WX}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.118" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1', 'program-sign': 'e6468e0269eb145100c44613cfe54881', 'devid': '', 'random': '8008982334', 'timestamp': '1586417032814', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:53.118" endtime="20200409 15:23:53.119"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.119" level="INFO">${random} = 9602421539</msg>
+<status status="PASS" starttime="20200409 15:23:53.119" endtime="20200409 15:23:53.119"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.120" level="INFO">${typerandom} = 9602421539</msg>
+<status status="PASS" starttime="20200409 15:23:53.119" endtime="20200409 15:23:53.120"></status>
+</kw>
+<msg timestamp="20200409 15:23:53.120" level="INFO">${random} = 9602421539</msg>
+<status status="PASS" starttime="20200409 15:23:53.119" endtime="20200409 15:23:53.120"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.120" level="INFO">${time} = 1586417033120</msg>
+<status status="PASS" starttime="20200409 15:23:53.120" endtime="20200409 15:23:53.120"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.121" level="INFO">${typetime} = 1586417033120</msg>
+<status status="PASS" starttime="20200409 15:23:53.121" endtime="20200409 15:23:53.121"></status>
+</kw>
+<msg timestamp="20200409 15:23:53.121" level="INFO">${timestamp} = 1586417033120</msg>
+<status status="PASS" starttime="20200409 15:23:53.120" endtime="20200409 15:23:53.121"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.122" level="INFO">${secret} = 1c5fd71e2ced6add2dc5d13b5c917bbc</msg>
+<status status="PASS" starttime="20200409 15:23:53.121" endtime="20200409 15:23:53.122"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;nickname=${nickname}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.122" level="INFO">${program_sign} = 9538f4a253ffa208b3e7fdc037bbb41d</msg>
+<status status="PASS" starttime="20200409 15:23:53.122" endtime="20200409 15:23:53.122"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,nickname,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.122" level="INFO">${proParams} = uid,provider,nickname,oid</msg>
+<status status="PASS" starttime="20200409 15:23:53.122" endtime="20200409 15:23:53.122"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:53.123" endtime="20200409 15:23:53.123"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:53.123" endtime="20200409 15:23:53.123"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+<arg>nickname</arg>
+<arg>${nickname}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.124" level="INFO">${bodyData} = {'uid': '462', 'provider': 'tencent_wechat', 'oid': 'okiVGszfVTWUkYxfeLKHTUlnrjlw', 'nickname': 'Lz'}</msg>
+<status status="PASS" starttime="20200409 15:23:53.123" endtime="20200409 15:23:53.124"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${BIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.125" level="INFO">POST Request using : uri=/api/bind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': '9538f4a253ffa208b3e7fdc037bbb41d', 'devid': '', 'random': '9602421539', 'timestamp': '1586417033120', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'} 
+data=uid=462&amp;provider=tencent_wechat&amp;oid=okiVGszfVTWUkYxfeLKHTUlnrjlw&amp;nickname=Lz 
+json=None</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "path": "/sso-app/api/bind",</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "error": "用户身份不合法",</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">  "timestamp": 1586417033234</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:53.248" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:53.124" endtime="20200409 15:23:53.248"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.249" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x1051a7e20&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.249" endtime="20200409 15:23:53.249"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.250" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x1051a7e20&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.249" endtime="20200409 15:23:53.250"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:53.118" endtime="20200409 15:23:53.250"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.tencent_wechat.oid}</arg>
+<arg>${OID_WX}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.250" level="FAIL">Resolving variable '${response_data.tencent_wechat.oid}' failed: AttributeError: 'Dict2Object' object has no attribute 'tencent_wechat'</msg>
+<status status="FAIL" starttime="20200409 15:23:53.250" endtime="20200409 15:23:53.250"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="FAIL" starttime="20200409 15:23:53.115" endtime="20200409 15:23:53.250" critical="yes">Resolving variable '${response_data.tencent_wechat.oid}' failed: AttributeError: 'Dict2Object' object has no attribute 'tencent_wechat'</status>
+</test>
+<test id="s1-t3" name="执行完用例二后解绑微信，以免影响后续测试">
+<kw name="Unbind" library="SSOCommon">
+<doc>本队手机号解绑第三方账号</doc>
+<arguments>
+<arg>${UID}</arg>
+<arg>${PROVIDER_WX}</arg>
+<arg>${OID_WX}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.254" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1', 'program-sign': '9538f4a253ffa208b3e7fdc037bbb41d', 'devid': '', 'random': '9602421539', 'timestamp': '1586417033120', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:53.253" endtime="20200409 15:23:53.254"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.255" level="INFO">${random} = 9488436057</msg>
+<status status="PASS" starttime="20200409 15:23:53.254" endtime="20200409 15:23:53.255"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.255" level="INFO">${typerandom} = 9488436057</msg>
+<status status="PASS" starttime="20200409 15:23:53.255" endtime="20200409 15:23:53.255"></status>
+</kw>
+<msg timestamp="20200409 15:23:53.255" level="INFO">${random} = 9488436057</msg>
+<status status="PASS" starttime="20200409 15:23:53.254" endtime="20200409 15:23:53.255"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.256" level="INFO">${time} = 1586417033255</msg>
+<status status="PASS" starttime="20200409 15:23:53.256" endtime="20200409 15:23:53.256"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.256" level="INFO">${typetime} = 1586417033255</msg>
+<status status="PASS" starttime="20200409 15:23:53.256" endtime="20200409 15:23:53.256"></status>
+</kw>
+<msg timestamp="20200409 15:23:53.257" level="INFO">${timestamp} = 1586417033255</msg>
+<status status="PASS" starttime="20200409 15:23:53.255" endtime="20200409 15:23:53.257"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.257" level="INFO">${secret} = 90399b48675e43163ddbc1a3c798cbec</msg>
+<status status="PASS" starttime="20200409 15:23:53.257" endtime="20200409 15:23:53.257"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.258" level="INFO">${program_sign} = bb6207dabee298c8ecdd3d2712c4d689</msg>
+<status status="PASS" starttime="20200409 15:23:53.257" endtime="20200409 15:23:53.258"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.258" level="INFO">${proParams} = uid,provider,oid</msg>
+<status status="PASS" starttime="20200409 15:23:53.258" endtime="20200409 15:23:53.258"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:53.258" endtime="20200409 15:23:53.258"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:53.259" endtime="20200409 15:23:53.259"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.260" level="INFO">${bodyData} = {'uid': '462', 'provider': 'tencent_wechat', 'oid': 'okiVGszfVTWUkYxfeLKHTUlnrjlw'}</msg>
+<status status="PASS" starttime="20200409 15:23:53.259" endtime="20200409 15:23:53.260"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${UNBIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.260" level="INFO">POST Request using : uri=/api/unbind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': 'bb6207dabee298c8ecdd3d2712c4d689', 'devid': '', 'random': '9488436057', 'timestamp': '1586417033255', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,oid'} 
+data=uid=462&amp;provider=tencent_wechat&amp;oid=okiVGszfVTWUkYxfeLKHTUlnrjlw 
+json=None</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "path": "/sso-app/api/unbind",</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "error": "用户身份不合法",</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">  "timestamp": 1586417033480</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:53.491" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:53.260" endtime="20200409 15:23:53.491"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:53.492" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x1051c7310&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.492" endtime="20200409 15:23:53.492"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:53.492" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x1051c7310&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:53.492" endtime="20200409 15:23:53.493"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:53.253" endtime="20200409 15:23:53.493"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20200409 15:23:56.495" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20200409 15:23:53.493" endtime="20200409 15:23:56.495"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200409 15:23:56.495" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200409 15:23:56.495" endtime="20200409 15:23:56.495"></status>
+</kw>
+<kw name="Fapi Status Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi response status code should be 0 (means success)</doc>
+<msg timestamp="20200409 15:23:56.497" level="FAIL">AssertionError</msg>
+<status status="FAIL" starttime="20200409 15:23:56.495" endtime="20200409 15:23:56.497"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="FAIL" starttime="20200409 15:23:53.251" endtime="20200409 15:23:56.497" critical="yes">AssertionError</status>
+</test>
+<test id="s1-t4" name="第三方账号已被绑定，新账号去绑定该三方账号时绑定失败接口提示&quot;开放账号已绑定该平台用户&quot;">
+<kw name="Bind" library="SSOCommon">
+<doc>本地手机号绑定第三方账号</doc>
+<arguments>
+<arg>${UID1}</arg>
+<arg>${PROVIDER_QQ}</arg>
+<arg>${OID_QQ}</arg>
+<arg>${NICKNAME_QQ}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:56.502" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1', 'program-sign': 'bb6207dabee298c8ecdd3d2712c4d689', 'devid': '', 'random': '9488436057', 'timestamp': '1586417033255', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,oid'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:56.501" endtime="20200409 15:23:56.502"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.503" level="INFO">${random} = 6900102236</msg>
+<status status="PASS" starttime="20200409 15:23:56.503" endtime="20200409 15:23:56.503"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.503" level="INFO">${typerandom} = 6900102236</msg>
+<status status="PASS" starttime="20200409 15:23:56.503" endtime="20200409 15:23:56.503"></status>
+</kw>
+<msg timestamp="20200409 15:23:56.504" level="INFO">${random} = 6900102236</msg>
+<status status="PASS" starttime="20200409 15:23:56.502" endtime="20200409 15:23:56.504"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.504" level="INFO">${time} = 1586417036504</msg>
+<status status="PASS" starttime="20200409 15:23:56.504" endtime="20200409 15:23:56.504"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.505" level="INFO">${typetime} = 1586417036504</msg>
+<status status="PASS" starttime="20200409 15:23:56.505" endtime="20200409 15:23:56.505"></status>
+</kw>
+<msg timestamp="20200409 15:23:56.505" level="INFO">${timestamp} = 1586417036504</msg>
+<status status="PASS" starttime="20200409 15:23:56.504" endtime="20200409 15:23:56.505"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.506" level="INFO">${secret} = fc27f7ae49a018e013ac49ee5f329d6b</msg>
+<status status="PASS" starttime="20200409 15:23:56.505" endtime="20200409 15:23:56.506"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;nickname=${nickname}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.507" level="INFO">${program_sign} = 6adde05ef571560d26d828bf17c13e44</msg>
+<status status="PASS" starttime="20200409 15:23:56.506" endtime="20200409 15:23:56.507"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,nickname,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.507" level="INFO">${proParams} = uid,provider,nickname,oid</msg>
+<status status="PASS" starttime="20200409 15:23:56.507" endtime="20200409 15:23:56.507"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:56.507" endtime="20200409 15:23:56.507"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:56.508" endtime="20200409 15:23:56.508"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+<arg>nickname</arg>
+<arg>${nickname}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:56.509" level="INFO">${bodyData} = {'uid': '28', 'provider': 'tencent_QQ', 'oid': 'F9C1B81FAF40B6F9AFC4B3EB935D2722', 'nickname': '张鹏'}</msg>
+<status status="PASS" starttime="20200409 15:23:56.508" endtime="20200409 15:23:56.509"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${BIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:56.509" level="INFO">POST Request using : uri=/api/bind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': '6adde05ef571560d26d828bf17c13e44', 'devid': '', 'random': '6900102236', 'timestamp': '1586417036504', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'} 
+data=uid=28&amp;provider=tencent_QQ&amp;oid=F9C1B81FAF40B6F9AFC4B3EB935D2722&amp;nickname=%E5%BC%A0%E9%B9%8F 
+json=None</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "path": "/sso-app/api/bind",</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "error": "用户不存在",</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">  "timestamp": 1586417037700</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:57.711" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:56.509" endtime="20200409 15:23:57.711"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.712" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a0c2e0&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.711" endtime="20200409 15:23:57.712"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.713" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a0c2e0&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.712" endtime="20200409 15:23:57.713"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:56.501" endtime="20200409 15:23:57.713"></status>
+</kw>
+<kw name="Fapi Status Should Be" library="FATL.FapiKeywords">
+<doc>Fapi response status code should be equal to the `expectedCode`</doc>
+<arguments>
+<arg>${RESULT}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.713" level="INFO">Actual status code is: -1</msg>
+<status status="PASS" starttime="20200409 15:23:57.713" endtime="20200409 15:23:57.713"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="PASS" starttime="20200409 15:23:56.497" endtime="20200409 15:23:57.713" critical="yes"></status>
+</test>
+<test id="s1-t5" name="账号未绑定第三方账号时，去绑定三方账号接口返回成功">
+<kw name="Bind" library="SSOCommon">
+<doc>本地手机号绑定第三方账号</doc>
+<arguments>
+<arg>${UID1}</arg>
+<arg>${PROVIDER_SINA}</arg>
+<arg>${OID_SINA}</arg>
+<arg>${NICKNAME_SINA}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.717" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1', 'program-sign': '6adde05ef571560d26d828bf17c13e44', 'devid': '', 'random': '6900102236', 'timestamp': '1586417036504', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:57.717" endtime="20200409 15:23:57.718"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.718" level="INFO">${random} = 9082590655</msg>
+<status status="PASS" starttime="20200409 15:23:57.718" endtime="20200409 15:23:57.718"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.719" level="INFO">${typerandom} = 9082590655</msg>
+<status status="PASS" starttime="20200409 15:23:57.719" endtime="20200409 15:23:57.719"></status>
+</kw>
+<msg timestamp="20200409 15:23:57.719" level="INFO">${random} = 9082590655</msg>
+<status status="PASS" starttime="20200409 15:23:57.718" endtime="20200409 15:23:57.719"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.720" level="INFO">${time} = 1586417037719</msg>
+<status status="PASS" starttime="20200409 15:23:57.719" endtime="20200409 15:23:57.720"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.720" level="INFO">${typetime} = 1586417037719</msg>
+<status status="PASS" starttime="20200409 15:23:57.720" endtime="20200409 15:23:57.720"></status>
+</kw>
+<msg timestamp="20200409 15:23:57.720" level="INFO">${timestamp} = 1586417037719</msg>
+<status status="PASS" starttime="20200409 15:23:57.719" endtime="20200409 15:23:57.720"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.721" level="INFO">${secret} = e8cb67eaac7c4e724ed546249062b1e9</msg>
+<status status="PASS" starttime="20200409 15:23:57.720" endtime="20200409 15:23:57.721"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;nickname=${nickname}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.721" level="INFO">${program_sign} = ec6417b8bc2a1e72079d49ca6e1ebfce</msg>
+<status status="PASS" starttime="20200409 15:23:57.721" endtime="20200409 15:23:57.721"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,nickname,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.722" level="INFO">${proParams} = uid,provider,nickname,oid</msg>
+<status status="PASS" starttime="20200409 15:23:57.721" endtime="20200409 15:23:57.722"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:57.722" endtime="20200409 15:23:57.722"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:57.722" endtime="20200409 15:23:57.722"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+<arg>nickname</arg>
+<arg>${nickname}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.723" level="INFO">${bodyData} = {'uid': '28', 'provider': 'sina_weibo', 'oid': '2721320961', 'nickname': '冠森丶'}</msg>
+<status status="PASS" starttime="20200409 15:23:57.723" endtime="20200409 15:23:57.723"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${BIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.724" level="INFO">POST Request using : uri=/api/bind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': 'ec6417b8bc2a1e72079d49ca6e1ebfce', 'devid': '', 'random': '9082590655', 'timestamp': '1586417037719', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'} 
+data=uid=28&amp;provider=sina_weibo&amp;oid=2721320961&amp;nickname=%E5%86%A0%E6%A3%AE%E4%B8%B6 
+json=None</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "path": "/sso-app/api/bind",</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "error": "用户不存在",</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">  "timestamp": 1586417037818</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:57.829" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:57.723" endtime="20200409 15:23:57.829"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.830" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a14790&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.830" endtime="20200409 15:23:57.830"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.831" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a14790&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.830" endtime="20200409 15:23:57.831"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:57.716" endtime="20200409 15:23:57.831"></status>
+</kw>
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${response_data.sina_weibo.oid}</arg>
+<arg>${OID_SINA}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.831" level="FAIL">Resolving variable '${response_data.sina_weibo.oid}' failed: AttributeError: 'Dict2Object' object has no attribute 'sina_weibo'</msg>
+<status status="FAIL" starttime="20200409 15:23:57.831" endtime="20200409 15:23:57.831"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="FAIL" starttime="20200409 15:23:57.714" endtime="20200409 15:23:57.832" critical="yes">Resolving variable '${response_data.sina_weibo.oid}' failed: AttributeError: 'Dict2Object' object has no attribute 'sina_weibo'</status>
+</test>
+<test id="s1-t6" name="执行完用例四后解绑微博，以免影响后续测试">
+<kw name="Unbind" library="SSOCommon">
+<doc>本队手机号解绑第三方账号</doc>
+<arguments>
+<arg>${UID1}</arg>
+<arg>${PROVIDER_SINA}</arg>
+<arg>${OID_SINA}</arg>
+</arguments>
+<kw name="Fapi Create Session" library="FATL.FapiKeywords">
+<doc>Fapi Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${SSO_URL}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.835" level="INFO">Creating Session using : alias=appif, url=https://api1.fjdaily.com:18443/sso-app, headers={'APITEST': '1', 'program-sign': 'ec6417b8bc2a1e72079d49ca6e1ebfce', 'devid': '', 'random': '9082590655', 'timestamp': '1586417037719', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,nickname,oid'},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<status status="PASS" starttime="20200409 15:23:57.835" endtime="20200409 15:23:57.836"></status>
+</kw>
+<kw name="Random" library="Random_Time">
+<assign>
+<var>${random}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>random.randint(0,10000000000)</arg>
+<arg>random</arg>
+</arguments>
+<assign>
+<var>${random}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.836" level="INFO">${random} = 8294445959</msg>
+<status status="PASS" starttime="20200409 15:23:57.836" endtime="20200409 15:23:57.836"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${random})</arg>
+</arguments>
+<assign>
+<var>${typerandom}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.837" level="INFO">${typerandom} = 8294445959</msg>
+<status status="PASS" starttime="20200409 15:23:57.836" endtime="20200409 15:23:57.837"></status>
+</kw>
+<msg timestamp="20200409 15:23:57.837" level="INFO">${random} = 8294445959</msg>
+<status status="PASS" starttime="20200409 15:23:57.836" endtime="20200409 15:23:57.837"></status>
+</kw>
+<kw name="Time" library="Random_Time">
+<assign>
+<var>${timestamp}</var>
+</assign>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>int(time.time()*1000)</arg>
+<arg>time</arg>
+</arguments>
+<assign>
+<var>${time}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.838" level="INFO">${time} = 1586417037837</msg>
+<status status="PASS" starttime="20200409 15:23:57.837" endtime="20200409 15:23:57.838"></status>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<doc>Evaluates the given expression in Python and returns the results.</doc>
+<arguments>
+<arg>str(${time})</arg>
+</arguments>
+<assign>
+<var>${typetime}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.838" level="INFO">${typetime} = 1586417037837</msg>
+<status status="PASS" starttime="20200409 15:23:57.838" endtime="20200409 15:23:57.838"></status>
+</kw>
+<msg timestamp="20200409 15:23:57.838" level="INFO">${timestamp} = 1586417037837</msg>
+<status status="PASS" starttime="20200409 15:23:57.837" endtime="20200409 15:23:57.838"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>devid=${EMPTY}&amp;random=${random}&amp;timestamp=${timestamp}&amp;token=${TOKEN}&amp;version=${VERSION}</arg>
+</arguments>
+<assign>
+<var>${secret}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.839" level="INFO">${secret} = e4fe3caa599d1e84f343ee845e6074d7</msg>
+<status status="PASS" starttime="20200409 15:23:57.838" endtime="20200409 15:23:57.839"></status>
+</kw>
+<kw name="Md 5" library="APPSSO">
+<arguments>
+<arg>uid=${uid}&amp;provider=${provider}&amp;oid=${oid}&amp;secret=${secret}</arg>
+</arguments>
+<assign>
+<var>${program_sign}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.839" level="INFO">${program_sign} = 6645c6881aed14d352a825fa6b6a32fe</msg>
+<status status="PASS" starttime="20200409 15:23:57.839" endtime="20200409 15:23:57.839"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>uid,provider,oid</arg>
+</arguments>
+<assign>
+<var>${proParams}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.839" level="INFO">${proParams} = uid,provider,oid</msg>
+<status status="PASS" starttime="20200409 15:23:57.839" endtime="20200409 15:23:57.839"></status>
+</kw>
+<kw name="Fapi Params Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request parameters.</doc>
+<arguments>
+<arg>curVersions</arg>
+<arg>${CURVERSIONS}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:57.840" endtime="20200409 15:23:57.840"></status>
+</kw>
+<kw name="Fapi Headers Set" library="FATL.FapiKeywords">
+<doc>Adds the given ``key_value_pairs`` and ``items`` to HTTP request headers.</doc>
+<arguments>
+<arg>program-sign</arg>
+<arg>${program_sign}</arg>
+<arg>devid</arg>
+<arg>${EMPTY}</arg>
+<arg>random</arg>
+<arg>${random}</arg>
+<arg>timestamp</arg>
+<arg>${timestamp}</arg>
+<arg>token</arg>
+<arg>${TOKEN}</arg>
+<arg>version</arg>
+<arg>${VERSION}</arg>
+<arg>Content-Type</arg>
+<arg>application/x-www-form-urlencoded</arg>
+<arg>program-params</arg>
+<arg>${proParams}</arg>
+</arguments>
+<status status="PASS" starttime="20200409 15:23:57.840" endtime="20200409 15:23:57.840"></status>
+</kw>
+<kw name="Create Dictionary" library="BuiltIn">
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<arguments>
+<arg>uid</arg>
+<arg>${uid}</arg>
+<arg>provider</arg>
+<arg>${provider}</arg>
+<arg>oid</arg>
+<arg>${oid}</arg>
+</arguments>
+<assign>
+<var>${bodyData}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.841" level="INFO">${bodyData} = {'uid': '28', 'provider': 'sina_weibo', 'oid': '2721320961'}</msg>
+<status status="PASS" starttime="20200409 15:23:57.841" endtime="20200409 15:23:57.841"></status>
+</kw>
+<kw name="Fapi Post" library="FATL.FapiKeywords">
+<doc>Send a POST request on the session object found using the
+given `alias`</doc>
+<arguments>
+<arg>${APPIF_ALIAS}</arg>
+<arg>${UNBIND_URI}</arg>
+<arg>data=${bodyData}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.842" level="INFO">POST Request using : uri=/api/unbind, params={'curVersions': '1'}, files=None, allow_redirects=True, timeout=None
+headers={'User-Agent': 'python-requests/2.23.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'APITEST': '1', 'program-sign': '6645c6881aed14d352a825fa6b6a32fe', 'devid': '', 'random': '8294445959', 'timestamp': '1586417037837', 'token': '', 'version': '4.0.3', 'Content-Type': 'application/x-www-form-urlencoded', 'program-params': 'uid,provider,oid'} 
+data=uid=28&amp;provider=sina_weibo&amp;oid=2721320961 
+json=None</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">JSON string is : {</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "code": 0,</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "msg": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "value": {},</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "status": -1,</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "message": "user account exception",</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "data": {},</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "path": "/sso-app/api/unbind",</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "error": "用户不存在",</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">  "timestamp": 1586417037950</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">}</msg>
+<msg timestamp="20200409 15:23:57.964" level="INFO">/Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages/urllib3/connectionpool.py:997: InsecureRequestWarning: Unverified HTTPS request is being made to host 'api1.fjdaily.com'. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings
+  warnings.warn(</msg>
+<status status="PASS" starttime="20200409 15:23:57.841" endtime="20200409 15:23:57.964"></status>
+</kw>
+<kw name="Fapi Data To Object" library="FATL.FapiKeywords">
+<doc>Convert Fapi response content to python object</doc>
+<assign>
+<var>${data}</var>
+</assign>
+<msg timestamp="20200409 15:23:57.965" level="INFO">${data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a1d190&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.965" endtime="20200409 15:23:57.965"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${response_data}</arg>
+<arg>${data}</arg>
+</arguments>
+<msg timestamp="20200409 15:23:57.965" level="INFO">${response_data} = &lt;FATL.Json2Object.Dict2Object object at 0x106a1d190&gt;</msg>
+<status status="PASS" starttime="20200409 15:23:57.965" endtime="20200409 15:23:57.965"></status>
+</kw>
+<status status="PASS" starttime="20200409 15:23:57.834" endtime="20200409 15:23:57.966"></status>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<doc>Pauses the test executed for the given time.</doc>
+<arguments>
+<arg>3</arg>
+</arguments>
+<msg timestamp="20200409 15:24:00.967" level="INFO">Slept 3 seconds</msg>
+<status status="PASS" starttime="20200409 15:23:57.966" endtime="20200409 15:24:00.967"></status>
+</kw>
+<kw name="Fapi Request Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi HTTP response code should be 200 (means success)</doc>
+<msg timestamp="20200409 15:24:00.968" level="INFO">HTTP response code is 200</msg>
+<status status="PASS" starttime="20200409 15:24:00.968" endtime="20200409 15:24:00.968"></status>
+</kw>
+<kw name="Fapi Status Should Be Succeed" library="FATL.FapiKeywords">
+<doc>Fapi response status code should be 0 (means success)</doc>
+<msg timestamp="20200409 15:24:00.969" level="FAIL">AssertionError</msg>
+<status status="FAIL" starttime="20200409 15:24:00.968" endtime="20200409 15:24:00.969"></status>
+</kw>
+<tags>
+<tag>会员/本地账号绑定第三方账号（胡勇）</tag>
+<tag>作者：张鹏</tag>
+<tag>冒烟集-翔宇</tag>
+</tags>
+<status status="FAIL" starttime="20200409 15:23:57.832" endtime="20200409 15:24:00.969" critical="yes">AssertionError</status>
+</test>
+<doc>本地账号绑定第三方账号</doc>
+<status status="FAIL" starttime="20200409 15:23:52.484" endtime="20200409 15:24:00.971"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="4">Critical Tests</stat>
+<stat pass="2" fail="4">All Tests</stat>
+</total>
+<tag>
+<stat pass="2" fail="4">会员/本地账号绑定第三方账号（胡勇）</stat>
+<stat pass="2" fail="4">作者：张鹏</stat>
+<stat pass="2" fail="4">冒烟集-翔宇</stat>
+</tag>
+<suite>
+<stat pass="2" fail="4" id="s1" name="Bind">Bind</stat>
+</suite>
+</statistics>
+<errors>
+<msg timestamp="20200409 15:23:52.507" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/XY_SSO/SSOCommon.robot': Non-existing setting 'Force Tags'.</msg>
+<msg timestamp="20200409 15:23:52.507" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/XY_SSO/SSOCommon.robot': Non-existing setting '...'.</msg>
+<msg timestamp="20200409 15:23:52.805" level="ERROR">Error in file '/Users/linhai/PycharmProjects/API/XY_SSO/Random_Time.robot': Importing test library 'MyLib' failed: ModuleNotFoundError: No module named 'MyLib'
+Traceback (most recent call last):
+  None
+PYTHONPATH:
+  /Users/linhai/PycharmProjects/api
+  /Library/Frameworks/Python.framework/Versions/3.8/bin
+  /Library/Frameworks/Python.framework/Versions/3.8/lib/python38.zip
+  /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8
+  /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/lib-dynload
+  /Library/Frameworks/Python.framework/Versions/3.8/lib/python3.8/site-packages
+  /Users/linhai/PycharmProjects/api</msg>
+</errors>
+</robot>
