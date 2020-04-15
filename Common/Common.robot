@@ -12,11 +12,11 @@ Library                                 Selenium2Library
 
 *** Variables ***
 #外网接口地址
-#${SERVER}                               https://api1.fjdaily.com
-###${SERVER}                               http://218.66.59.25:3082
-#${SSO}                                  https://api1.fjdaily.com:18443
-${SERVER}                               http://218.66.59.25:3082
-${SSO}                                  http://218.66.59.25:3083
+${SERVER}                               https://api1.fjdaily.com
+##${SERVER}                               http://218.66.59.25:3082
+${SSO}                                  https://api1.fjdaily.com:18443
+#${SERVER}                               http://218.66.59.25:3082
+#${SSO}                                  http://218.66.59.25:3083
 
 ${APPIF_URL}                            ${SERVER}/app_if
 ${SSO_URL}                              ${SSO}/sso-app

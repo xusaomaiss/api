@@ -17,7 +17,7 @@ ${COUNT1}                               -1                  #稿件数量负数�
 ${RESULT}                               0
 ${RESULT1}                              []
 ${TITLE}                                测试\\\\
-
+${STRVERSION}                           1585738348000
 *** Keywords ***
 
 *** Test Cases ***
@@ -43,6 +43,30 @@ ${TITLE}                                测试\\\\
     log                                 ${str_data}
     should contain                      ${str_data}                     version
 
+1读取首页所有栏目数据,接口返回所有栏目查询结果
+    Get SearchAll                       ${COLUMNID}
+    ...                                 ${KEY}
+    ...                                 ${START}
+    ...                                 ${COUNT}
+    ${len}                              Get Length          ${response_data}
+    Log                                 ${response_data}
+    Should Be True                      ${len}>${RESULT}
+    Log                                 ${response_data[0].version}
+
+    ${json_data}                        Fapi Response Data
+    ${str_data}                         Convert To String                       ${json_data}
+    Log                                 ${str_data}
+    Should Contain                      ${str_data}            ${KEY}
+
+
+
+#    ${str_version}                      Convert To String                       ${response_data[0].version}
+#    Should Be Equal As Strings          ${str_version}                          ${STRVERSION}
+#    Should Contain                      ${response_data[0].title}               ${KEY}
+#    :FOR                                ${i}                IN RANGE            0                   3
+#    \                                   log                                     ${response_data[${i}]}
+#    \              Should Contain       ${response_data[${i}].title}                               ${KEY}
+#    ${dd}                     Get From Dictionary                    ${response_data}             data
 
 测试不存在栏目ID查询结果为空
     Get SearchAll                       ${COLUMNID1}
